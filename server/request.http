@@ -1,0 +1,25 @@
+POST http://localhost:5001/api/auth/register
+Content-Type: application/json
+
+{
+    "firstName":"Le",
+    "lastName":"hung",
+    "email":"tinhyeucuatui2001@gmail.com",
+    "password":"hung12345"
+}
+
+#####
+//login
+POST   http://localhost:5001/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"tinhyeucuatui2002@gmail.com",
+    "password":"hung12345"
+}
+
+###
+
+POST http://localhost:5001/api/auth/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJlYTE0MmI1MDBkMjA3YjNhNzBjZGQiLCJpYXQiOjE2Mzk5NjcyNjB9.mKUFdfnpV4eAj-L2XMC688HDjsxrpItjeaxUM9gix0Y
