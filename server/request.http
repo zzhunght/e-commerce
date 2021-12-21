@@ -4,7 +4,7 @@ Content-Type: application/json
 {
     "firstName":"Le",
     "lastName":"hung",
-    "email":"tinhyeucuatui2001@gmail.com",
+    "email":"tinhyeucuatui2002@gmail.com",
     "password":"hung12345"
 }
 
@@ -19,7 +19,34 @@ Content-Type: application/json
 }
 
 ###
-
+//load user
 POST http://localhost:5001/api/auth/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJlYTE0MmI1MDBkMjA3YjNhNzBjZGQiLCJpYXQiOjE2Mzk5NjcyNjB9.mKUFdfnpV4eAj-L2XMC688HDjsxrpItjeaxUM9gix0Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2Mzk5Njg4MzV9.oORqFg_wc4XO3sLD1q1logrIvz6xfYYRsMkEraWVcEY
+
+
+######
+//Product test
+
+POST   http://localhost:5001/api/products
+Content-Type: application/json 
+
+{
+    "name":"iPhone 7",
+    "category":"Smartphone",
+    "description":"Apple iphone 7",
+    "imageUrl":"https://24hstore.vn/images/products/2020/04/19/large/iphone-7-rose-gold.jpg",
+    "color":["Black","Rose","Gold"],
+    "skus":[
+        {
+            "size":"32GB",
+            "price":"399"
+        },
+        {
+            "size":"128GB",
+            "price":"500"
+        }
+    ],
+    "quantity":101,
+    "brand":"Apple"
+}
