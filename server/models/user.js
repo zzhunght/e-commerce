@@ -15,6 +15,10 @@ const UserSchema = new Schema({
     email:{
         type:String,
         unique:true
+    },
+    createdAt:{
+        type:Date,
+        default: Date.now
     }
 })
 
