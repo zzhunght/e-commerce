@@ -66,21 +66,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZ
 Content-Type: application/json
 
 {
-    "name":"iPhone 11",
-    "category":"Smartphone",
-    "description":"Apple iphone 11",
-    "imageUrl":"https://24hstore.vn/images/products/2020/04/19/large/iphone-7-rose-gold.jpg",
-    "color":["Black","Rose","Gold","Gray","White"],
-    "skus":[
-        {
-            "size":"256GB",
-            "price":"1399"
-        },
-        {
-            "size":"512GB",
-            "price":"1699"
-        }
-    ],
-    "quantity":101,
-    "brand":"Apple"
+    "name": "iPhone SE 2020"
 }
+
+
+################################################################
+DELETE  http://localhost:5001/api/products/61c3d9d5be83e6caeb84d1b7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo
