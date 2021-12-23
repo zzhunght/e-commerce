@@ -4,7 +4,6 @@ const verifyToken = async (req,res,next) =>{
     try {
         const header = await req.headers['authorization']
         const accessToken = header && header.split(' ')[1]
-        console.log('accessToken',accessToken)
 
         if(!accessToken) return res.status(401).json({
             success:false,
@@ -12,7 +11,6 @@ const verifyToken = async (req,res,next) =>{
         })
 
         const decode = jwt.verify(accessToken,process.env.SECRET_TOKEN_SIGN)
-        console.log(decode)
         req.userId = decode.userId
         next()
     } catch (error) {

@@ -26,9 +26,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZ
 
 
 ######
-//Product test
+//Product post test
 
 POST   http://localhost:5001/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo
 Content-Type: application/json 
 
 {
@@ -44,7 +45,40 @@ Content-Type: application/json
         },
         {
             "size":"128GB",
-            "price":"500"
+            "price":"699"
+        }
+    ],
+    "quantity":101,
+    "brand":"Apple"
+}
+
+##########
+GET  http://localhost:5001/api/products
+
+
+######
+GET http://localhost:5001/api/products/myproducts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo 
+
+##########
+PUT http://localhost:5001/api/products/61c3d9d6be83e6caeb84d1bb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo
+Content-Type: application/json
+
+{
+    "name":"iPhone 11",
+    "category":"Smartphone",
+    "description":"Apple iphone 11",
+    "imageUrl":"https://24hstore.vn/images/products/2020/04/19/large/iphone-7-rose-gold.jpg",
+    "color":["Black","Rose","Gold","Gray","White"],
+    "skus":[
+        {
+            "size":"256GB",
+            "price":"1399"
+        },
+        {
+            "size":"512GB",
+            "price":"1699"
         }
     ],
     "quantity":101,
