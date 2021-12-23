@@ -110,31 +110,15 @@ route.put('/:id',verifyToken,async (req,res)=>{
     const itemId = req.params.id
 
     try {
-        const { name, category , color,description,skus,quantity,imageUrl,brand } = req.body
-        if(
-            !name || !skus || !color ||
-            !quantity || !imageUrl ||
-            !description || !category || !brand
-        ){
-            return res.status(400).json({
-                success: false,
-                message:'Post update failed'
-            })
-        }
+        console.log(req.body)
 
         const conditions = {
             _id:itemId,
             user:userId
         }
         const UpdateItem = {
-            name,
-            description,
-            skus,
-            color,
-            category,
-            brand,
-            imageUrl,
-            quantity
+            ...req.body,
+            updatedAt: Date.now()
         }
 
         const newItem = await Product.findOneAndUpdate(conditions, UpdateItem,{
