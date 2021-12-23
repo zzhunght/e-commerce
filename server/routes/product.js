@@ -1,12 +1,15 @@
 const express = require('express')
 const route = express.Router()
+const Product = require('../models/product')
+const verifyToken = require('../middleware/auth')
 
 
 //api/products
 //post Method
 //pivates the route
 
-route.post('/', async (req,res)=>{
+route.post('/',verifyToken, async (req,res)=>{
+    const userId = req.userId
     console.log(req.body)
     const { name, category , color,description,skus,quantity,imageUrl,brand } = req.body
     try {
@@ -20,11 +23,172 @@ route.post('/', async (req,res)=>{
                 message:'Post product failed'
             })
         }
+
+        const newProduct = new Product({
+            name,
+            description,
+            skus,
+            color,
+            category,
+            brand,
+            imageUrl,
+            quantity,
+            user:userId
+        })
         
-        res.json({success: true, message:'1111'})
+        await newProduct.save()
+
+        res.json({success: true, product:newProduct})
     } catch (error) {
-        
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
     }
 })
+
+
+//get all item
+// public methods
+route.get('/', async (req,res)=>{
+    try {
+        const products = await Product.find()
+
+        if(!products) return res.json({
+            success: false,
+            message:'No item Found'
+        })
+
+        res.json({
+            success:true,
+            products
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
+    }
+})
+
+
+//get pivates item
+// pivate method
+route.get('/myproducts',verifyToken,async (req,res)=>{
+    const userId = req.userId
+    
+    try {
+        const products = await Product.find({user:userId})
+        if(!products) return res.json({
+            success: false,
+            message:'No item Found'
+        })
+
+        res.json({
+            success:true,
+            products
+        })
+
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
+    }
+})
+
+
+//update item
+// pivate route
+route.put('/:id',verifyToken,async (req,res)=>{
+    const userId = req.userId
+    const itemId = req.params.id
+
+    try {
+        const { name, category , color,description,skus,quantity,imageUrl,brand } = req.body
+        if(
+            !name || !skus || !color ||
+            !quantity || !imageUrl ||
+            !description || !category || !brand
+        ){
+            return res.status(400).json({
+                success: false,
+                message:'Post update failed'
+            })
+        }
+
+        const conditions = {
+            _id:itemId,
+            user:userId
+        }
+        const UpdateItem = {
+            name,
+            description,
+            skus,
+            color,
+            category,
+            brand,
+            imageUrl,
+            quantity
+        }
+
+        const newItem = await Product.findOneAndUpdate(conditions, UpdateItem,{
+            new:true
+        } )
+
+        res.status(200).json({
+            success:true,
+            productsItem: newItem
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
+    }
+})
+
+
+// delete item
+// pivate route
+route.delete('/:id',verifyToken,async (req,res)=>{
+
+    const userId = req.userId
+    const itemId = req.params.id
+
+    try {
+        const conditions = {
+            _id: itemId,
+            user:userId
+        }
+        const  deleteItem = await Product.findOneAndDelete(conditions)
+        if(!deleteItem) return res.status(404).json({
+            success:false,
+            message:' item not found'
+        })
+
+        res.status(200).json({
+            success:true,
+            message:'delete item successfully',
+            deleteItem
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
+    }
+
+})
+
 
 module.exports = route
