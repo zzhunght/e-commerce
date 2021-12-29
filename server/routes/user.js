@@ -1,11 +1,14 @@
 const express = require('express')
 const User = require('../models/user')
+const Cart = require('../models/cart')
 const route = express.Router()
 const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
 const verifyToken = require('../middleware/auth')
 
 // api/auth
+
+//load user
 route.post('/',verifyToken,async(req,res)=>{
     const userId = req.userId
     try {
@@ -34,42 +37,47 @@ route.post('/',verifyToken,async(req,res)=>{
 //public
 route.post('/register', async (req,res) =>{
    try {
-    console.log(req.body)
-    const {firstName,lastName,email,password} = req.body
+        console.log(req.body)
+        const {firstName,lastName,email,password} = req.body
 
-    if(!firstName || !lastName || !email || !password){
-        return res.status(400).json({
-            success:false,
-            message:'Missing some infomation'
+        if(!firstName || !lastName || !email || !password){
+            return res.status(400).json({
+                success:false,
+                message:'Missing some infomation'
+            })
+        }
+
+        const user = await User.find({email:email})
+        if(user === true){
+            return res.status(400).json({
+                success:false,
+                message:'user already used'
+            })
+        }
+
+        const hashpassword = await argon2.hash(password)
+        const newUser = new User({
+            firstName,
+            lastName,
+            email,
+            password:hashpassword
         })
-    }
+        await newUser.save()
 
-    const user = await User.find({email:email})
-    if(user === true){
-        return res.status(400).json({
-            success:false,
-            message:'user already used'
+        //khi tạo ra 1 user mới thì tạo cho user đó 1 cart rỗng
+        const newCart = new Cart({
+            user: newUser._id
         })
-    }
+        await newCart.save()
+        const accessToken = jwt.sign({
+            userId:newUser._id
+        },process.env.SECRET_TOKEN_SIGN)
 
-    const hashpassword = await argon2.hash(password)
-    const newUser = new User({
-        firstName,
-        lastName,
-        email,
-        password:hashpassword
-    })
-    await newUser.save()
-    
-    const accessToken = jwt.sign({
-        userId:newUser._id
-    },process.env.SECRET_TOKEN_SIGN)
-
-    res.status(200).json({
-        success:true,
-        user:newUser,
-        accessToken
-    })
+        res.status(200).json({
+            success:true,
+            user:newUser,
+            accessToken
+        })
    } catch (error) {
        return res.status(500).json({
            success:false,

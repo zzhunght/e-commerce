@@ -32,10 +32,7 @@ const CartSchema = new Schema({
                ref:'product',
                require:true
            },
-           name:{
-               type:String,
-               require:true
-           },
+          
            quantity:{
                type:Number,
                default:1,
@@ -47,4 +44,4 @@ const CartSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('cart',CartSchema)
+module.exports = mongoose.model('carts',CartSchema)
