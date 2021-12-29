@@ -4,7 +4,7 @@ Content-Type: application/json
 {
     "firstName":"Le",
     "lastName":"hung",
-    "email":"tinhyeucuatui2002@gmail.com",
+    "email":"tinhyeucuatui2003@gmail.com",
     "password":"hung12345"
 }
 
@@ -14,7 +14,7 @@ POST   http://localhost:5001/api/auth/login
 Content-Type: application/json
 
 {
-    "email":"tinhyeucuatui2002@gmail.com",
+    "email":"tinhyeucuatui2003@gmail.com",
     "password":"hung12345"
 }
 
@@ -61,15 +61,71 @@ GET http://localhost:5001/api/products/myproducts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo 
 
 ##########
+// sửa product
 PUT http://localhost:5001/api/products/61c3d9d6be83e6caeb84d1bb
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo
 Content-Type: application/json
 
 {
-    "name": "iPhone SE 2020"
+    "name": "iPhone SE 2021"
 }
 
 
 ################################################################
+//delete product
 DELETE  http://localhost:5001/api/products/61c3d9d5be83e6caeb84d1b7
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo
+
+
+
+
+
+
+
+
+########
+// cart api
+
+
+//add to cart 
+PUT   http://localhost:5001/api/cart/add
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1MjY4NjRjYTljMzJkNmUzOGVlMmQiLCJpYXQiOjE2NDAzMTI5MjB9.fJ91qN4NS-GaPL7TQBOIqQazPxOzdNgLCmA6lYa4LDI
+Content-Type: application/json
+
+{
+    "skus":{
+        "size":"32GB",
+        "price":"1399"
+    },
+    "productId":"61c3d9d6be83e6caeb84d1bb",
+    "quantity":3
+
+}
+
+##################
+// sủa 1 item trong cart
+PATCH   http://localhost:5001/api/cart/update/61c9272e04ea0b12a0de44a5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1MjY4NjRjYTljMzJkNmUzOGVlMmQiLCJpYXQiOjE2NDAzMTI5MjB9.fJ91qN4NS-GaPL7TQBOIqQazPxOzdNgLCmA6lYa4LDI
+Content-Type: application/json
+
+{
+    "skus":{
+        "size":"32GB",
+        "price":"1399"
+    },
+    "productId":"61c3d9d6be83e6caeb84d1bb",
+    "quantity":2
+
+}
+#########
+
+
+// xoá item trong cart
+DELETE http://localhost:5001/api/cart/delete/61c91b75fbd8d2459975c0c8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1MjY4NjRjYTljMzJkNmUzOGVlMmQiLCJpYXQiOjE2NDAzMTI5MjB9.fJ91qN4NS-GaPL7TQBOIqQazPxOzdNgLCmA6lYa4LDI
+
+
+##############
+// get cart
+GET http://localhost:5001/api/cart/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1MjY4NjRjYTljMzJkNmUzOGVlMmQiLCJpYXQiOjE2NDAzMTI5MjB9.fJ91qN4NS-GaPL7TQBOIqQazPxOzdNgLCmA6lYa4LDI
