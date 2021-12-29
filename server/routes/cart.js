@@ -28,7 +28,7 @@ route.get('/',verifyToken,async (req,res)=>{
         })
         res.status(200).json({
             success:true,
-            message:' delete item successfully',
+            message:' get cart item successfully',
             cart:cart
         })
 
