@@ -1,0 +1,6 @@
+@import '~antd/dist/antd.css';
+#root{
+    max-width: 100%;
+    overflow: hidden;
+    background-image:linear-gradient(99.9deg, #1890ff, #ffc44e)
+}

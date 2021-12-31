@@ -1,0 +1,22 @@
+form{
+
+}
+.form-group{
+    margin-bottom:10px;
+}
+.form-group input{
+    width: 86%;
+    outline: none;
+    border: none;
+    height: 40px;
+    background: #e8f0fe;
+    border-radius:5px;
+    text-indent: 10px;
+}
+.login-btn{
+
+}
+.ant-modal-content {
+    overflow: hidden;
+    border-radius: 5px;
+}

@@ -1,0 +1,18 @@
+.carousel-wr{
+    width: 1200px;
+    margin: 0 auto;
+
+}
+.my-carousel{
+    height:100%
+}
+.swiper-wrapper{
+    width: 100%;
+    height: 580px;
+}
+.carousel-img{
+    width: 100%;
+}
+.carousel-img img{
+    width: 100%;
+}
