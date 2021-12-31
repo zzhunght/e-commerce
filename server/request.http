@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 //load user
-POST http://localhost:5001/api/auth/
+GET http://localhost:5001/api/auth/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2Mzk5Njg4MzV9.oORqFg_wc4XO3sLD1q1logrIvz6xfYYRsMkEraWVcEY
 

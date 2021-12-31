@@ -9,7 +9,7 @@ const verifyToken = require('../middleware/auth')
 // api/auth
 
 //load user
-route.post('/',verifyToken,async(req,res)=>{
+route.get('/',verifyToken,async(req,res)=>{
     const userId = req.userId
     try {
         const user = await User.findById(userId).select('-password')
@@ -47,7 +47,7 @@ route.post('/register', async (req,res) =>{
             })
         }
 
-        const user = await User.find({email:email})
+        const user = await User.findOne({email:email})
         if(user){
             return res.status(400).json({
                 success:false,
