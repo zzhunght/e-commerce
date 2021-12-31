@@ -48,7 +48,7 @@ route.post('/register', async (req,res) =>{
         }
 
         const user = await User.find({email:email})
-        if(user === true){
+        if(user){
             return res.status(400).json({
                 success:false,
                 message:'user already used'
@@ -74,6 +74,7 @@ route.post('/register', async (req,res) =>{
         },process.env.SECRET_TOKEN_SIGN)
 
         res.status(200).json({
+            message:'Register successfully',
             success:true,
             user:newUser,
             accessToken
@@ -117,6 +118,7 @@ route.post('/login',async (req,res) => {
             },process.env.SECRET_TOKEN_SIGN)
 
             return res.status(200).json({
+                message: 'Login successfully',
                 success:true,
                 accessToken
             })
