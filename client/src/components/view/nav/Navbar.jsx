@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { AuthContext } from '../../../Context/Auth'
 import logo from '../../../asset/logo.png'
+import ava from '../../../asset/ava.jpg'
 import { SearchOutlined } from '@ant-design/icons'
 import './NavbarStyle.css'
 import LoginModal from '../Modal/LoginModal'
@@ -10,7 +11,7 @@ import {message} from 'antd'
 
 
 function Navbar() {
-    const {Login,Register} = useContext(AuthContext)
+    const {LogOut,Login,Register,authState:{isAuthenticated,authLoading,user}} = useContext(AuthContext)
     const [LoginModalShow,setLoginModalShow] = useState(false)
     const [RegisterModalShow,setRegisterModalShow] = useState(false)
     
@@ -63,11 +64,34 @@ function Navbar() {
             </div>
             <div className="auth-control">
                 {
+                    !isAuthenticated && !user &&
                     <div className="login-register">
                         <p className="login" onClick={()=>setLoginModalShow(true)}>Login</p>
                         <p className="register" onClick={()=>setRegisterModalShow(true)}>register</p>
                     </div>
                 }
+                {
+                    isAuthenticated && user &&
+                    <div className="user-wr">
+                        <div className="user">
+                            <div className="user-avatar">
+                                <img src={ava} alt="" />
+                            </div>
+                            <div className="user-feature">
+                                <ul className="user-feature-list">
+                                    <li className="user-feature-item"> Cửa hàng của tôi</li>
+                                    <li className="user-feature-item" onClick={()=>LogOut()}> Đăng xuất</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="welcome">
+                            <p>Hi, {user.firstName} {user.lastName}</p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div className="cart-wr">
+                
             </div>
         </div>
         <LoginModal

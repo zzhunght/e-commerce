@@ -53,3 +53,71 @@
     margin-right: 10px;
     cursor: pointer;
 }
+.user-wr{
+    display: flex;
+}
+.user{
+    display: flex;
+    margin-left:50px;
+    position: relative;
+}
+.user-avatar{
+    position: relative;
+    width: 50px;
+    border-radius:50%;
+    border: 1px solid red;
+    overflow: hidden;
+}
+.user-avatar img{
+    width: 100%;
+    cursor: pointer;
+}
+.user:hover .user-feature{
+    max-height: 85px;
+    transition: all 0.35s ease-in-out;
+    
+}
+.user-feature{
+    /* display: none; */
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+    left: -50%;
+    margin-top:4px;
+    max-height: 0px;
+    transition: all 0.35s ease-in-out;
+    overflow: hidden;
+    
+}
+.user-feature::before{
+    content: "";
+    width: 64%;
+    position: absolute;
+    height: 16px;
+    top: -14px;
+}
+.user-feature-list{
+    list-style: none;
+    padding: 10px;
+    background-color:#fff;
+    width: 140px;
+    border: 1px solid #d8d8d8;
+}
+.user-feature-item{
+    cursor: pointer;
+    font-size :15px;
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+.user-feature-item:last-child{
+    font-weight: 600;
+    color: red
+}
+.welcome{
+    display: flex;
+    align-items: center;
+    margin-left: 6px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
