@@ -9,6 +9,10 @@
 .products-col{
 
 }
+.link{
+    text-decoration: none;
+    color: #000;
+}
 .card{
     cursor:pointer;
     position: relative;

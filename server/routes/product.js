@@ -74,6 +74,31 @@ route.get('/', async (req,res)=>{
     }
 })
 
+//get one product
+route.get('/:id', async (req,res)=>{
+    const id = req.params.id
+    try {
+        const product = await Product.findById(id)
+
+        if(!product) return res.json({
+            success: false,
+            message:'No item Found'
+        })
+
+        res.json({
+            success:true,
+            product
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
+    }
+})
+
 
 //get pivates item
 // pivate method
