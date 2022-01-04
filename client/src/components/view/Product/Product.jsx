@@ -1,9 +1,11 @@
-import React , { useContext, useEffect } from 'react';
+import React , { useContext, useEffect, useState } from 'react';
+import {Link,useParams} from 'react-router-dom'
 import { Row , Col } from 'antd'
 import { ProductContext } from '../../../Context/Product'
 import './ProductStyle.css'
 
 function Product() {
+    
     const {getProduct,productState:{products}} = useContext(ProductContext)
     useEffect(()=>getProduct(),[])
 
@@ -13,17 +15,19 @@ function Product() {
                 {
                     products?.map(item =>(
                         <Col key={item._id} className="products-col" xl={4} sm={6} xs={12}>
-                            <div className="card">
-                                <div className="card-item-img">
-                                    <img src={item.imageUrl} alt="card-img" />
+                            <Link to={`/${item._id}`} className="link">
+                                <div className="card">
+                                    <div className="card-item-img">
+                                        <img src={item.imageUrl} alt="card-img" />
+                                    </div>
+                                    <div className="card-item-details">
+                                        <p className="card-item-name">{item.name}</p>
+                                    </div>
+                                    <div className="add-to-cart">
+                                        <p>Add to Cart</p>
+                                    </div>
                                 </div>
-                                <div className="card-item-details">
-                                    <p className="card-item-name">{item.name}</p>
-                                </div>
-                                <div className="add-to-cart">
-                                    <p>Add to Cart</p>
-                                </div>
-                            </div>
+                            </Link>
                         </Col>
                     ))
                 }

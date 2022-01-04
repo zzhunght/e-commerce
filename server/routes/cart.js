@@ -18,14 +18,21 @@ route.get('/',verifyToken,async (req,res)=>{
               }
             )
         }
-
+        await Cart.aggregate([
+            {$unwind:"$products"},
+            {$group:{
+                _id:'$_id',
+                total:{$sum:"$products.skus.price"}
+            }}
+        ])
         const cart = await Cart.findOne({user:userId}).populate({
             path:'products',
             populate:{
                 path: 'productId',
-                select:'name imageUrl description'
+                select:'name imageUrl description category brand'
             }
         })
+      
         res.status(200).json({
             success:true,
             message:' get cart item successfully',
@@ -113,6 +120,7 @@ route.patch('/update/:id',verifyToken, async (req,res) =>{
                     "products.$.skus":req.body.skus,
                     "products.$.quantity":req.body.quantity,
                     "products.$.productId":req.body.productId,
+                    "products.$.color":req.body.color
                 }
             },
             {

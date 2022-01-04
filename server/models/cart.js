@@ -38,6 +38,10 @@ const CartSchema = new Schema({
                default:1,
                require:true
            },
+           color:{
+               type:String,
+               require:true
+           }
            
        }
     ]

@@ -1,4 +1,4 @@
-import { createContext , useReducer , useEffect } from 'react'
+import { createContext , useReducer , useEffect,useContext } from 'react'
 import {ApiUrl,TOKEN} from './constant'
 import axios from 'axios'
 import { AuthReducer } from '../Reducer/AuthReducer'
@@ -68,6 +68,7 @@ const AuthContextProvider = ({children}) =>{
             type:'LOG_OUT',
             payload:{}
         })
+       
     }
     const Register = async (form) =>{
         try {

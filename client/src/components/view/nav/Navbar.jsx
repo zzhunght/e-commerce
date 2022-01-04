@@ -1,20 +1,35 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../Context/Auth'
 import logo from '../../../asset/logo.png'
 import ava from '../../../asset/ava.jpg'
-import { SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import './NavbarStyle.css'
 import LoginModal from '../Modal/LoginModal'
 import RegisterModal from '../Modal/RegisterModal'
-import {message} from 'antd'
+import {message ,Badge} from 'antd'
+import { CartContext } from '../../../Context/Cart'
 
 
 
 function Navbar() {
+
+    //global state
     const {LogOut,Login,Register,authState:{isAuthenticated,authLoading,user}} = useContext(AuthContext)
+    const {cartState:{
+        carts
+    },GetCart} = useContext(CartContext)
+    
+    //local state
     const [LoginModalShow,setLoginModalShow] = useState(false)
     const [RegisterModalShow,setRegisterModalShow] = useState(false)
     
+
+    //useffect
+
+    useEffect(() =>{
+        GetCart()
+    },[user])
     //handel login
     const handleLoginModal = async(form)=>{
         console.log(form)
@@ -50,12 +65,19 @@ function Navbar() {
     const handleRegisterModalCancel = () =>{
         setRegisterModalShow(false)
     }
+
+    const onClickLogOut = () =>{
+        LogOut()
+        // setTimeout(() => {
+        //     GetCart()
+        // },500)
+    }
     return (
-        <>
+        <div className="navbar-wr">
         <div className="navbar">    
-            <div className="logo">
+            <Link to="/" className="logo">
                 <img src={logo} alt="" />
-            </div>
+            </Link>
             <div className="search-box">
                 <input name="search" placeholder="Search" type="text" className="search-form"/>
                 <div className="search-icon">
@@ -80,7 +102,7 @@ function Navbar() {
                             <div className="user-feature">
                                 <ul className="user-feature-list">
                                     <li className="user-feature-item"> Cửa hàng của tôi</li>
-                                    <li className="user-feature-item" onClick={()=>LogOut()}> Đăng xuất</li>
+                                    <li className="user-feature-item" onClick={onClickLogOut}> Đăng xuất</li>
                                 </ul>
                             </div>
                         </div>
@@ -90,8 +112,13 @@ function Navbar() {
                     </div>
                 }
             </div>
-            <div className="cart-wr">
-                
+            <div className="cart-icon-wr">
+                <Link to="/my-cart" className="cart-icon">
+                    <Badge count={carts.length || 0}  className="badge">
+                        <ShoppingCartOutlined  className="shopping-cart-icon"/>
+                    </Badge>
+
+                </Link>
             </div>
         </div>
         <LoginModal
@@ -105,7 +132,7 @@ function Navbar() {
          handleRegisterModal={handleRegisterModal} 
         />
         
-        </>
+        </div>
     )
 }
 
