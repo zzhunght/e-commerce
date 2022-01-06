@@ -1,0 +1,38 @@
+.stall-wr {
+    width: 1200px;
+    min-height: 500px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom:100px
+}
+.not-stall-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.not-stall-item-btn {
+    margin-top: 20px;
+    background: #0ebbff;
+    border: none;
+    outline: none;
+    height: 38px;
+    border-radius: 9px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}  
+.not-stall-item-btn:hover{
+    color: #fff;
+} 
+.not-stall-item-title {
+    font-size: 30px;
+    font-weight: 400;
+}

@@ -11,11 +11,11 @@ const verifyToken = require('../middleware/auth')
 route.post('/',verifyToken, async (req,res)=>{
     const userId = req.userId
     console.log(req.body)
-    const { name, category , color,description,skus,quantity,imageUrl,brand } = req.body
+    const { name, category , color,description,skus,imageUrl,brand } = req.body
     try {
         if(
             !name || !skus || !color ||
-            !quantity || !imageUrl ||
+            !imageUrl ||
             !description || !category || !brand
         ){
             return res.status(400).json({
@@ -32,7 +32,6 @@ route.post('/',verifyToken, async (req,res)=>{
             category,
             brand,
             imageUrl,
-            quantity,
             user:userId
         })
         
@@ -75,7 +74,7 @@ route.get('/', async (req,res)=>{
 })
 
 //get one product
-route.get('/:id', async (req,res)=>{
+route.get('/:id/p', async (req,res)=>{
     const id = req.params.id
     try {
         const product = await Product.findById(id)
@@ -104,9 +103,11 @@ route.get('/:id', async (req,res)=>{
 // pivate method
 route.get('/myproducts',verifyToken,async (req,res)=>{
     const userId = req.userId
+    console.log('userId',userId)
     
     try {
         const products = await Product.find({user:userId})
+        console.log(products)
         if(!products) return res.json({
             success: false,
             message:'No item Found'
