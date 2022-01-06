@@ -9,10 +9,11 @@ const productSchema = new Schema({
     category:{
         type:String,
     },
-    quantity:{
-        type:Number,
-        default:100,
-        require:true
+    status:{
+        type:String,
+        enum:['available','unavailable'],
+        require:true,
+        default:'available'
     },
     imageUrl:{
         type:String,

@@ -23,9 +23,9 @@ function Product() {
                                     <div className="card-item-details">
                                         <p className="card-item-name">{item.name}</p>
                                     </div>
-                                    <div className="add-to-cart">
+                                    {/* <div className="add-to-cart">
                                         <p>Add to Cart</p>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </Link>
                         </Col>

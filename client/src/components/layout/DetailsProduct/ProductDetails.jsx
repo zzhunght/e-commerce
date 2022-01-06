@@ -35,7 +35,8 @@ function ProductDetails() {
                 ...sku
             },
             productId:id,
-            quantity:quantity
+            quantity:quantity,
+            color:color
         }
         const res = await AddtoCart(form)
         console.log(res)

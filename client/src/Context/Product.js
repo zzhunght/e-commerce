@@ -13,7 +13,7 @@ const ProductContextProvider = ({children}) =>{
 
     const GetOneProduct = async(id) =>{
         try {
-            const res = await axios.get(`${ApiUrl}/products/${id}`)
+            const res = await axios.get(`${ApiUrl}/products/${id}/p`)
             if(res.data.success){
                 dispatch({
                     type: 'SET_PRODUCTS',

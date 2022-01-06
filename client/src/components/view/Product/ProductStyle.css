@@ -22,9 +22,16 @@
     border-radius: 9px;
     overflow: hidden;
     padding-top: 15px;
+    display: flex;
+    flex-direction: column;
 }
 .card-item-img{
     width: 100%;
+    object-fit: contain;
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items: center;
 }
 .card-item-img img{
     width: 100%;
@@ -49,7 +56,7 @@
     text-transform: uppercase;
     font-weight: 500;
     cursor: pointer;
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
     right: 0;
     left: 0;

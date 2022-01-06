@@ -34,7 +34,10 @@ function Cart() {
                                     <strong>Category :</strong> {cart.productId.category}
                                 </div>
                                 <div className="cart-item-brand">
-                                    <strong>Brand :</strong> {cart.productId.brand}
+                                    <strong style={{color: '#ff6c00'}}>Brand :</strong> {cart.productId.brand}
+                                </div>
+                                <div className="cart-item-color">
+                                    <strong style={{color: '#0abb0a'}}>Color :</strong> {cart.color}
                                 </div>
                                 <div className="cart-item-quantity">
                                     <strong>Qty:</strong> {cart.quantity}

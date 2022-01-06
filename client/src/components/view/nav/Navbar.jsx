@@ -101,7 +101,11 @@ function Navbar() {
                             </div>
                             <div className="user-feature">
                                 <ul className="user-feature-list">
-                                    <li className="user-feature-item"> Cửa hàng của tôi</li>
+                                    <li className="user-feature-item">
+                                        <Link to="/my-stall/products">
+                                            Cửa hàng của tôi
+                                        </Link>
+                                    </li>
                                     <li className="user-feature-item" onClick={onClickLogOut}> Đăng xuất</li>
                                 </ul>
                             </div>

@@ -55,7 +55,7 @@ Content-Type: application/json
 ##########
 GET  http://localhost:5001/api/products
 ######
-GET  http://localhost:5001/api/products/61c3d914b238557b204c0099
+GET  http://localhost:5001/api/products/61c3d914b238557b204c0099/p
 
 ######
 GET http://localhost:5001/api/products/myproducts
