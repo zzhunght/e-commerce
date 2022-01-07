@@ -7,7 +7,14 @@ export const StallReducer = (state, action) =>{
                 ...state,
                 ...payload
             }
-    
+        case 'SET_ITEM':{
+            return{
+                ...state,
+                item : {
+                    ...payload.item[0]
+                }
+            }
+        }
         default:
             break;
     }

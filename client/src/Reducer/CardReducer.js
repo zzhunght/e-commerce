@@ -16,7 +16,7 @@ export const CartReducer = (state, action) =>{
         case 'GET_CART_FAIL':
             return {
                 ...state,
-                carts:state.carts.filter(c=> c._id !== payload.id)
+                carts:payload.carts
             }
         case 'DELETE_ITEM':
             return {

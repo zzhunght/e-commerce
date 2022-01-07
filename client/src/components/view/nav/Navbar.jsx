@@ -28,6 +28,7 @@ function Navbar() {
     //useffect
 
     useEffect(() =>{
+        console.log('useeffect get cart')
         GetCart()
     },[user])
     //handel login
@@ -68,9 +69,7 @@ function Navbar() {
 
     const onClickLogOut = () =>{
         LogOut()
-        // setTimeout(() => {
-        //     GetCart()
-        // },500)
+        
     }
     return (
         <div className="navbar-wr">
