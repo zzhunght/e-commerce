@@ -18,8 +18,8 @@ const CartContextProvider = ({children}) =>{
 
     const GetCart = async () =>{
         console.log('get cart')
-        if(localStorage.getItem(TOKEN)){
-            setAuthToken(localStorage.getItem(TOKEN))
+        if(!localStorage.getItem(TOKEN)){
+            setAuthToken(localStorage.getItem(null))
         }
         try {
             const res = await axios.get(`${ApiUrl}/cart`)

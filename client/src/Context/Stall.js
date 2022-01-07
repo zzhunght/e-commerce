@@ -12,6 +12,15 @@ const StallContextProvider = ({children}) =>{
         item:null
     })
 
+    const FindItem = (id) =>{
+        const item = StallState.stalls.filter(item => item._id === id)
+        dispatch({
+            type: 'SET_ITEM',
+            payload: {
+                item: item
+            }
+        })
+    }
     const GetStall = async () =>{
         try {
             const res = await axios.get(`${ApiUrl}/products/myproducts`)
@@ -50,7 +59,7 @@ const StallContextProvider = ({children}) =>{
         }
     }
 
-    const stalldata = {GetStall,StallState,AddStall}
+    const stalldata = {GetStall,StallState,AddStall,FindItem}
     return (
         <StallContext.Provider value={stalldata}>
             {children}
