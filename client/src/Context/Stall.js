@@ -24,7 +24,6 @@ const StallContextProvider = ({children}) =>{
     const GetStall = async () =>{
         try {
             const res = await axios.get(`${ApiUrl}/products/myproducts`)
-            console.log('my-product',res.data)
             if(res.data.success){
                 dispatch({
                     type: 'SET_STALL',
@@ -59,7 +58,22 @@ const StallContextProvider = ({children}) =>{
         }
     }
 
-    const stalldata = {GetStall,StallState,AddStall,FindItem}
+    const EditStall = async (form,id) =>{
+        try {
+            const res = await axios.patch(`${ApiUrl}/products/${id}`,form)
+            console.log('add stall res',res.data)
+            return res.data
+        } catch (error) {
+            if (error.response) return error.response
+            return {
+                success: false,
+                message:'Some Things went wrongs'
+
+            }
+        }
+    }
+
+    const stalldata = {GetStall,StallState,AddStall,FindItem,EditStall}
     return (
         <StallContext.Provider value={stalldata}>
             {children}

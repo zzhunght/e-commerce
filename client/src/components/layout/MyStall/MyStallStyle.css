@@ -88,3 +88,8 @@ tr {
     padding:5px;
     border-bottom: 1px solid #ccc;
 }
+select#status {
+    margin-left: 10px;
+    width: 120px;
+}
+

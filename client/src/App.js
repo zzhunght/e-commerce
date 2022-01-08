@@ -12,6 +12,7 @@ import Cart from './components/Cart/Cart';
 import StallContextProvider from './Context/Stall';
 import MyStall from './components/layout/MyStall/MyStall';
 import AddProductPage from './components/layout/Form/AddProductPage';
+import EditProductPage from './components/layout/Form/EditProductPage';
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
                 </Route>
                 <Route exact path="/stall/add">
                   <AddProductPage />
+                </Route>
+                <Route exact path="/stall/edit">
+                  <EditProductPage />
                 </Route>
               </Switch>
             </Router>

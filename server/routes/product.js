@@ -131,7 +131,7 @@ route.get('/myproducts',verifyToken,async (req,res)=>{
 
 //update item
 // pivate route
-route.put('/:id',verifyToken,async (req,res)=>{
+route.patch('/:id',verifyToken,async (req,res)=>{
     const userId = req.userId
     const itemId = req.params.id
 

@@ -63,7 +63,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZ
 
 ##########
 // sửa product
-PUT http://localhost:5001/api/products/61c3d9d6be83e6caeb84d1bb
+PATCH  http://localhost:5001/api/products/61c3d9d6be83e6caeb84d1bb
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo
 Content-Type: application/json
 

@@ -34,7 +34,7 @@ label{
 }
 .add-form .form-group textarea {
     width: 700px;
-    height: 180px;
+    height: 150px;
     border-radius: 4px;
     border: none;
     padding: 5px 10px;
@@ -121,4 +121,14 @@ p.form-sku-title {
 p.form-sku-item-title {
     color: #7b7b7b;
 
+}
+button.btn.btn-submit {
+    margin-top: 20px;
+    background: #0093fe;
+    border: none;
+    color: #fff;
+    padding: 4px 10px;
+    min-width: 90px;
+    cursor: pointer;
+    border-radius: 3px;
 }

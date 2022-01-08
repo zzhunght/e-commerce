@@ -56,7 +56,7 @@ function MyStall() {
                                 {item.status === 'available' ? 'Còn hàng' :'Hết Hàng'}
                             </th>
                             <th className="stall-table-edit">
-                                <div className="item-edit" onClick={()=>FindItem(item._id)}> Sửa</div>
+                                <Link to={`/stall/edit`} className="item-edit" onClick={()=>FindItem(item._id)}> Sửa</Link>
                                 <div className="item-delete"> Xoá</div>
                             </th>
                         </tr>
