@@ -25,12 +25,13 @@
 .product-details-description{
     padding-left: 10px;
     border-left: 1px solid #d7d7d7;
+    width: 400px;
 }
 .product-details-name{
     font-size: 22px;
 }
 .product-details-price{
-    width: 300px;
+    width: 100%;
     background: #eeeeee;
     height: 50px;
     display: flex;
@@ -143,4 +144,108 @@
 }
 .add-to-card-btn .btn:hover{
     opacity:0.9;
+}
+.shop-img {
+    width: 50px;
+    height: auto;
+}
+.shop-img  img{
+    width: 100%;
+    object-fit: contain;
+}
+.product-details-shop {
+    position: relative;
+    margin-left: 30px;
+    border: 1px solid #ccc;
+    flex: 1;
+    border-radius: 4px;
+}
+.product-details-shop-header {
+    padding: 20px 20px 10px 20px;
+    display:flex;
+    align-items: center;
+}
+.shop-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    box-shadow: rgb(0 0 0 / 24%) 0px 1px 5px;
+}
+.shop-name {
+    margin-left: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    height: 27px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.watch-shop-details,.follow-shop {
+    width: 100px;
+    height: 32px;
+    border: 1.5px solid #18a3e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    border-radius: 3px;
+    color: rgb(13, 92, 182);
+    font-weight: 600;
+    cursor: pointer;
+}
+.watch-shop {
+    padding: 10px 20px;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+
+}
+.shop-security {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+
+}
+.shop-security-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+span.shop-security-title {
+    color: #858585;
+}
+span.shop-security-value {
+    color: #000;
+    font-weight: 500;
+}
+span.shop-security-value.shop-security-link{
+    color: rgb(0, 156, 247);
+    cursor: pointer;
+}
+.benefit {
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+.benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+}
+.benefit-item-value {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:#8f8f8f;
+}
+.benefit-item-icon {
+    font-size: 28px;
+    color: #0093ff;
+}
+span.benefit-item-value-title {
+    font-weight: 500;
+    color: #000;
 }

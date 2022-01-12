@@ -1,0 +1,111 @@
+.sl-wr {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    min-height:700px;
+}
+.sl-img {
+    width: 65px;
+    height: 65px;
+    border-radius:50%;
+    overflow: hidden;
+    border: 1px #898989 solid;
+}
+.sl-img img {
+    width: 100%;
+    height: 100%;
+}
+.sl-details {
+    position: relative;
+    display: flex;
+    padding-right: 60px;
+}
+.sl-details::after{
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: rgba(204, 204, 204, 0.582);
+    height: 100%;
+}
+.sl-header {
+    width: 100%;
+    background-image: url(https://salt.tikicdn.com/ts/sellercenterFE/af/03/9b/57f855e860180c28a25949bce95c1266.png);
+    background-repeat: no-repeat;
+    display: flex;
+    background-size: cover;
+    align-items: center;
+    color: #fff;
+    padding: 15px 30px;
+    min-height: 170px;
+}
+.sl-des {
+    margin-left: 13px;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+.sl-name {
+    font-size: 23px;
+    font-weight: 500;
+    max-width: 160px;
+    max-height: 38px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.sl-sub-des {
+    display: flex;
+    color: #ccc;
+}
+.sl-rating {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 64px;
+    letter-spacing:2px;
+}
+span.anticon.anticon-star.star {
+    margin-right: 7px;
+    color: #ffb200;
+}
+.sl-rating::after{
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 3px;
+    width: 1px;
+    height:60%;
+    background:#ccc;
+}
+.sl-follower {
+    margin-left: 10px;
+}
+.sl-follow-btn {
+    margin-left: 10px;
+}
+.follow-shop.sl-follow-btn {
+    background: rgb(32 120 220);
+    color: #fff;
+}
+.sl-product-header {
+    font-size: 25px;
+    /* margin: 14px 0px; */
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+.sl-product-wr{
+    box-sizing: border-box;
+    padding:0 10px 20px;
+    background-color: #fff;
+    min-height:450px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    max-width:100%;
+}
+.sl-product-list{
+    margin-top: 20px;
+    max-width: 100%;
+}

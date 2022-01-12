@@ -13,6 +13,8 @@ import StallContextProvider from './Context/Stall';
 import MyStall from './components/layout/MyStall/MyStall';
 import AddProductPage from './components/layout/Form/AddProductPage';
 import EditProductPage from './components/layout/Form/EditProductPage';
+import SellerContextProvider from './Context/SellerStall';
+import SellerStall from './components/layout/SellerStall/SellerStall';
 
 function App() {
   return (
@@ -20,29 +22,34 @@ function App() {
       <CartContextProvider>
         <ProductContextProvider>
           <StallContextProvider>
-            <Router>
-              <Navbar />
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route exact path="/my-cart">
-                  <Cart />
-                </Route>
-                <Route exact path="/my-stall/products">
-                  <MyStall />
-                </Route>
-                <Route exact path="/:id">
-                  <ProductDetails />
-                </Route>
-                <Route exact path="/stall/add">
-                  <AddProductPage />
-                </Route>
-                <Route exact path="/stall/edit">
-                  <EditProductPage />
-                </Route>
-              </Switch>
-            </Router>
+            <SellerContextProvider>
+              <Router>
+                <Navbar />
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route exact path="/my-cart">
+                    <Cart />
+                  </Route>
+                  <Route exact path="/my-stall/products">
+                    <MyStall />
+                  </Route>
+                  <Route exact path="/:id">
+                    <ProductDetails />
+                  </Route>
+                  <Route exact path="/stall/add">
+                    <AddProductPage />
+                  </Route>
+                  <Route exact path="/stall/edit">
+                    <EditProductPage />
+                  </Route>
+                  <Route exact path="/:id/stall">
+                    <SellerStall />
+                  </Route>
+                </Switch>
+              </Router>
+            </SellerContextProvider>
           </StallContextProvider>
         </ProductContextProvider>
       </CartContextProvider>
