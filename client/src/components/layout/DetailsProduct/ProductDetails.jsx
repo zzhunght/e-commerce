@@ -1,7 +1,8 @@
 import React , {useContext , useState, useEffect } from 'react'
 import { ProductContext } from '../../../Context/Product'
+import { FileProtectOutlined, LikeOutlined, RollbackOutlined, ShopOutlined} from '@ant-design/icons'
 import { CartContext } from '../../../Context/Cart'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './ProductDetails.css'
 function ProductDetails() {
 
@@ -117,6 +118,73 @@ function ProductDetails() {
                         >
                             Add TO CarT
                         </button>
+                    </div>
+                </div>
+                <div className="product-details-shop">
+                    <div className="product-details-shop-header">
+                        <div className="shop-img">
+                            <img src="https://cdn1.vectorstock.com/i/1000x1000/65/60/business-online-shop-computer-monitor-store-icon-vector-17026560.jpg" alt="" />
+                        </div>
+                        <div className="shop-name">{product?.user?.firstName} {product?.user?.lastName}</div>
+                    </div>
+
+                    <div className="watch-shop">
+                        <Link to={`/${product?.user?._id}/stall`} className="watch-shop-details">
+                            <ShopOutlined style={{marginRight:'4px'}} /> Xem Shop
+                        </Link>
+                        <div className="follow-shop shop-des-btn">
+                            + Theo Dõi
+                        </div>
+                    </div>
+                    <div className="shop-security">
+                        <div className="shop-security-item">
+                            <span className="shop-security-title">Thời Gian Bảo Hành</span>
+                            <span className="shop-security-value"> 2 Năm</span>
+                        </div>
+                        <div className="shop-security-item">
+                            <span className="shop-security-title">Hình thức Bảo Hành</span>
+                            <span className="shop-security-value">Phiếu bảo hành</span>
+                        </div>
+                        <div className="shop-security-item">
+                            <span className="shop-security-title">Nơi Bảo Hành</span>
+                            <span className="shop-security-value">Tại cửa hàng</span>
+                        </div>
+                        <div className="shop-security-item">
+                            <span className="shop-security-title">Hướng dẫn Bảo Hành</span>
+                            <span className="shop-security-value shop-security-link"> Xem Chi tiết</span>
+                        </div>
+                    </div>
+                    <div className="benefit">
+                        <div className="benefit-item">
+                            <div className="benefit-item-icon">
+                                <FileProtectOutlined className="benefit-icon" />
+                            </div>
+                            <div className="benefit-item-value">
+                                <span>Hoàn Tiền</span>
+                                <span  className="benefit-item-value-title">111% </span>
+                                <span>nếu hàng giả</span>
+                            </div>
+                        </div>
+                        <div className="benefit-item">
+                            <div className="benefit-item-icon">
+                                <LikeOutlined className="benefit-icon" />
+                            </div>
+                            <div className="benefit-item-value">
+                                <span>Mở hộp</span>
+                                <span>Kiểm tra</span>
+                                <span>Nhận hàng</span>
+                            </div>
+                        </div>
+                        <div className="benefit-item">
+                            <div className="benefit-item-icon">
+                                <RollbackOutlined className="benefit-icon" />
+                            </div>
+                            <div className="benefit-item-value">
+                                <span>Đổi trả hàng</span>
+                                <span  className="benefit-item-value-title">7 Ngày</span>
+                                <span>nếu sp lỗi</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

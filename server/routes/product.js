@@ -1,6 +1,7 @@
 const express = require('express')
 const route = express.Router()
 const Product = require('../models/product')
+const User = require('../models/user')
 const verifyToken = require('../middleware/auth')
 
 
@@ -73,11 +74,42 @@ route.get('/', async (req,res)=>{
     }
 })
 
+//get all item shop
+// public methods
+route.get('/:id/shop', async (req,res)=>{
+    const id = req.params.id
+    try {
+        const user = await User.findById(id).select('-password -email')
+        const products = await Product.find({user:id})
+
+        if(!products) return res.json({
+            success: false,
+            message:'No item Found'
+        })
+
+        res.json({
+            success:true,
+            products,
+            user,
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
+    }
+})
+
 //get one product
 route.get('/:id/p', async (req,res)=>{
     const id = req.params.id
     try {
-        const product = await Product.findById(id)
+        const product = await Product.findById(id).populate({
+            path:'user',
+            select:'firstName , lastName , _id'
+        })
 
         if(!product) return res.json({
             success: false,
