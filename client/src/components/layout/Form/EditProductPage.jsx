@@ -1,4 +1,4 @@
-import React , {useState,useContext} from 'react'
+import React , {useState,useContext, useEffect} from 'react'
 import { Redirect, useHistory ,useParams} from 'react-router-dom'
 import { StallContext } from '../../../Context/Stall'
 import './Style.css'
@@ -9,17 +9,26 @@ function EditProductPage() {
     const id = param.id
     let history = useHistory()
     //global state and props
-    const {EditStall,StallState:{item}} = useContext(StallContext)
+    const {EditStall,StallState:{item},GetCategory} = useContext(StallContext)
 
     if(!item) history.push('/my-stall/products')
     //local state
+    const [categoriesList,setCategoriesList] = useState([
+        {
+            name:'',
+            label:{
+                en:"",
+                vi:''
+            }
+        }
+    ])
     const [formvalue,setFormValue] = useState({
         name:item?.name || '',
         description:item?.description || '',
         brand:item?.brand || '',
-        category:item?.category || '',
+        category:item?.category._id || '',
         imageUrl:item?.imageUrl || '',    
-        status:'available',
+        status:item?.status || 'available',
     })
     const [color,setColor] = useState(item?.color || [''])
     const [skus,setSkus] = useState(item?.skus || [
@@ -104,13 +113,31 @@ function EditProductPage() {
             ],
             color: [...color]
         }
-
+        
+        // console.log(form)
         const res = await EditStall(form,item._id)
         history.push('/my-stall/products')
         
     }
 
     //###########3
+        //category
+    const onCategoryChange = (e) => {
+        setFormValue({
+            ...formvalue,
+            category:e.target.value
+        })
+    }
+    
+    // useEffect
+    
+    useEffect(() => {
+        const Getcategory = async ()=>{
+            const res = await GetCategory()
+            setCategoriesList(res.category)
+        }
+        Getcategory()
+    },[])
     return (
         <div className="stall-form-add-wr">
             <div className="form-wr">
@@ -138,16 +165,25 @@ function EditProductPage() {
                          onChange={(e)=>onFormChange(e)}
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group category select">
                         <label htmlFor="category">Danh Mục</label>
-                        <input
-                         type="text" 
-                         name="category" 
-                         id="category"
+                        <select
+                         id="category" 
+                         className=" beautiful" 
+                         onChange={e =>onCategoryChange(e)}
                          value={formvalue.category}
-                         onChange={(e)=>onFormChange(e)}
-
-                        />
+                        >
+                            
+                            {categoriesList.map((item,i) => (
+                                <option
+                                 value={item._id}
+                                 key={i}
+                                >
+                                    {item.label.vi}
+                                </option>
+                            ))}
+                        
+                        </select>
                     </div>
                     
                     <div className="form-group">
@@ -160,10 +196,15 @@ function EditProductPage() {
                          onChange={(e)=>onFormChange(e)}
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group select">
                         
                         <label for="status">Tình Trạng</label>
-                        <select id="status" onChange={e =>onStatusChange(e)}>
+                        <select
+                         id="status" 
+                         className="beautiful" 
+                         onChange={e =>onStatusChange(e)}
+                         value={formvalue.status}
+                        >
                             <option value="available">Có Sẵn </option>
                             <option value="unavailable">Hết Hàng</option>
                            

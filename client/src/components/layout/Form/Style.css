@@ -132,3 +132,16 @@ button.btn.btn-submit {
     cursor: pointer;
     border-radius: 3px;
 }
+select.beautiful {
+    /* margin-left: 20px; */
+    width: 700px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    text-indent: 10px;
+}
+.form-group.select {
+    display: flex;
+    flex-direction: column;
+}

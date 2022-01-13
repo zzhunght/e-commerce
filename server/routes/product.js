@@ -53,7 +53,7 @@ route.post('/',verifyToken, async (req,res)=>{
 // public methods
 route.get('/', async (req,res)=>{
     try {
-        const products = await Product.find()
+        const products = await Product.find().populate('category')
 
         if(!products) return res.json({
             success: false,
@@ -109,7 +109,7 @@ route.get('/:id/p', async (req,res)=>{
         const product = await Product.findById(id).populate({
             path:'user',
             select:'firstName , lastName , _id'
-        })
+        }).populate('category')
 
         if(!product) return res.json({
             success: false,
@@ -138,7 +138,7 @@ route.get('/myproducts',verifyToken,async (req,res)=>{
     console.log('userId',userId)
     
     try {
-        const products = await Product.find({user:userId})
+        const products = await Product.find({user:userId}).populate('category')
         console.log(products)
         if(!products) return res.json({
             success: false,

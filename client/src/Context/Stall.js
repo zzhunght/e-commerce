@@ -9,7 +9,7 @@ const StallContextProvider = ({children}) =>{
     const [StallState,dispatch] = useReducer(StallReducer,{
         stalls:[],
         stallLoading:true,
-        item:null
+        item:null,
     })
 
     const FindItem = (id) =>{
@@ -20,6 +20,20 @@ const StallContextProvider = ({children}) =>{
                 item: item
             }
         })
+    }
+
+    const GetCategory = async() =>{
+
+        try {
+            const res = await axios.get(`${ApiUrl}/category`)
+            if(res.data.success) return res.data
+        } catch (error) {
+            if (error.response) return error.response
+            return {
+                success:false,
+                category:[]
+            }
+        }
     }
     const GetStall = async () =>{
         try {
@@ -73,7 +87,7 @@ const StallContextProvider = ({children}) =>{
         }
     }
 
-    const stalldata = {GetStall,StallState,AddStall,FindItem,EditStall}
+    const stalldata = {GetStall,StallState,AddStall,FindItem,EditStall,GetCategory}
     return (
         <StallContext.Provider value={stalldata}>
             {children}
