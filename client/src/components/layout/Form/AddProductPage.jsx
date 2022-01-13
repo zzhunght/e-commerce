@@ -1,11 +1,11 @@
-import React , {useState,useContext} from 'react'
+import React , {useState,useContext,useEffect} from 'react'
 import { StallContext } from '../../../Context/Stall'
 import './Style.css'
 
 
 function AddProductPage() {
     //global state and props
-    const {AddStall} = useContext(StallContext)
+    const {AddStall,GetCategory} = useContext(StallContext)
     //local state
     const [formvalue,setFormValue] = useState({
         name:'',
@@ -14,6 +14,15 @@ function AddProductPage() {
         category:'',
         imageUrl:'',    
     })
+    const [categoriesList,setCategoriesList] = useState([
+        {
+            name:'',
+            label:{
+                en:"",
+                vi:''
+            }
+        }
+    ])
     const [color,setColor] = useState([''])
     const [skus,setSkus] = useState([{
         size:'',
@@ -93,11 +102,34 @@ function AddProductPage() {
         }
 
         const res = AddStall(form)
-        console.log('form',form)
+        // console.log('form',form)
         
     }
 
-    //###########3
+    //category
+    const onCategoryChange = (e) => {
+        setFormValue({
+            ...formvalue,
+            category:e.target.value
+        })
+    }
+
+    // useEffect
+
+    useEffect(() => {
+        const Getcategory = async ()=>{
+            const res = await GetCategory()
+            
+            setCategoriesList(res.category)
+            setFormValue({
+                ...formvalue,
+                category:res.category[0]._id
+            })
+        }
+        Getcategory()
+    },[])
+
+    //
     return (
         <div className="stall-form-add-wr">
             <div className="form-wr">
@@ -125,16 +157,20 @@ function AddProductPage() {
                          onChange={(e)=>onFormChange(e)}
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="category">Danh Mục</label>
-                        <input
-                         type="text" 
-                         name="category" 
-                         id="category"
-                         value={formvalue.category}
-                         onChange={(e)=>onFormChange(e)}
-
-                        />
+                    
+                    <div className="form-group category select">
+                        <label for="category">Danh Mục</label>
+                        <select id="category" className=" beautiful" onChange={e =>onCategoryChange(e)}>
+                            {categoriesList.map((item,i) => (
+                                <option
+                                value={item._id}
+                                key={i}
+                                >
+                                    {item.label.vi}
+                                </option>
+                            ))}
+                        
+                        </select>
                     </div>
                     
                     <div className="form-group">

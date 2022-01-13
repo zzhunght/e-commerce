@@ -7,7 +7,8 @@ const productSchema = new Schema({
         require:true
     },
     category:{
-        type:String,
+        type:Schema.Types.ObjectId,
+        ref:'category'
     },
     status:{
         type:String,

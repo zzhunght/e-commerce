@@ -55,13 +55,17 @@ function SellerStall() {
                                 Tất Cả Sản Phẩm
                             </div>
 
-                            <div className="sl-product-list">
-                                <Row className="products-row" gutter={[16,16]}>
-                                    {products?.map(item =>(
-                                        <ProductItem item={item} />
-                                    ))}
-                                </Row>
-                            </div>
+                           {    
+                                products &&
+                                products.length > 0 &&
+                                <div className="sl-product-list">
+                                    <Row className="products-row" gutter={[16,16]}>
+                                        {products?.map(item =>(
+                                            <ProductItem item={item} />
+                                        ))}
+                                    </Row>
+                                </div>
+                           }
                         </div>
                     </div>
                 </div>

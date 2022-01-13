@@ -130,3 +130,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1M
 // get cart
 GET http://localhost:5001/api/cart/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1MjY4NjRjYTljMzJkNmUzOGVlMmQiLCJpYXQiOjE2NDAzMTI5MjB9.fJ91qN4NS-GaPL7TQBOIqQazPxOzdNgLCmA6lYa4LDI
+
+
+
+###################
+POST http://localhost:5001/api/category
+Content-Type: application/json
+
+{
+    "name":"other",
+    "label":{
+        "en":"Other",
+        "vi":"Khác"
+    }
+}
