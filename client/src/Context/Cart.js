@@ -17,7 +17,6 @@ const CartContextProvider = ({children}) =>{
     })
 
     const GetCart = async () =>{
-        console.log('get cart')
         if(!localStorage.getItem(TOKEN)){
             setAuthToken(localStorage.getItem(null))
         }
@@ -38,9 +37,7 @@ const CartContextProvider = ({children}) =>{
                     }
                 })
             }
-            console.log('get cart success')
         } catch (error) {
-            console.log('get cart fails',error)
             dispatch({
                 type:'GET_CART_FAIL',
                 payload:{

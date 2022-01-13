@@ -15,6 +15,16 @@ export const StallReducer = (state, action) =>{
                 }
             }
         }
+        case 'POST_ITEM':
+            return {
+                ...state,
+                stalls:state.stalls.unshift(payload),
+            }
+        case 'DELETE_ITEM':
+            return{
+                ...state,
+                stalls: state.stalls.filter(i => i._id !== payload)
+            }
         default:
             break;
     }

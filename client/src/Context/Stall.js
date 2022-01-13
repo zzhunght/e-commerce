@@ -60,8 +60,15 @@ const StallContextProvider = ({children}) =>{
     const AddStall = async (form) =>{
         try {
             const res = await axios.post(`${ApiUrl}/products`,form)
-            console.log('add stall res',res.data)
-            return res.data
+            if(res.data.success){
+                dispatch({
+                    type:'POST_ITEM',
+                    payload:{
+                        ...form,
+                        _id:res.data._id
+                    }
+                })
+            }
         } catch (error) {
             if (error.response) return error.response
             return {
@@ -87,7 +94,27 @@ const StallContextProvider = ({children}) =>{
         }
     }
 
-    const stalldata = {GetStall,StallState,AddStall,FindItem,EditStall,GetCategory}
+    const DeleteItem = async (id) =>{
+        console.log('id',id)
+        try {
+            const  res = await axios.delete(`${ApiUrl}/products/${id}`)
+            if(res.data.success){
+                dispatch({
+                    type: 'DELETE_ITEM',
+                    payload:id
+                })
+            }
+        } catch (error) {
+            if (error.response) return error.response
+            return {
+                success: false,
+                message:'Some Things went wrongs'
+
+            }
+        }
+    }
+
+    const stalldata = {GetStall,StallState,AddStall,FindItem,EditStall,GetCategory,DeleteItem}
     return (
         <StallContext.Provider value={stalldata}>
             {children}

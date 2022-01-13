@@ -55,7 +55,7 @@ Content-Type: application/json
 ##########
 GET  http://localhost:5001/api/products
 ######
-GET  http://localhost:5001/api/products/61c3d914b238557b204c0099/p
+GET  http://localhost:5001/api/products/61d6af0ea3db852249c430df/p
 
 ######
 GET http://localhost:5001/api/products/myproducts
@@ -138,9 +138,13 @@ POST http://localhost:5001/api/category
 Content-Type: application/json
 
 {
-    "name":"other",
+    "name":"bonsai",
     "label":{
-        "en":"Other",
-        "vi":"Khác"
+        "en":"Bon Sai",
+        "vi":"Cây Cảnh"
     }
 }
+
+
+#################33
+GET http://localhost:5001/api/category

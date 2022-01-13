@@ -4,3 +4,15 @@
     overflow: hidden;
     background-image:linear-gradient(112deg, #1890ff, #ffc44e)
 }
+.loading {
+    margin: 0 auto;
+    text-align: center;
+}
+span.anticon.anticon-loading.anticon-spin {
+    font-size: 65px;
+    color: #fff;
+    margin-top: 100px;
+}
+.black span.anticon.anticon-loading.anticon-spin {
+    color: #000;
+}

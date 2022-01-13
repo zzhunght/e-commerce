@@ -1,9 +1,11 @@
 import React , {useState,useContext,useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import { StallContext } from '../../../Context/Stall'
 import './Style.css'
 
 
 function AddProductPage() {
+    let history = useHistory()
     //global state and props
     const {AddStall,GetCategory} = useContext(StallContext)
     //local state
@@ -102,6 +104,7 @@ function AddProductPage() {
         }
 
         const res = AddStall(form)
+        history.push('/my-stall/products')
         // console.log('form',form)
         
     }

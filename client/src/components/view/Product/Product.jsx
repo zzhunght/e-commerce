@@ -1,13 +1,13 @@
 import React , { useContext, useEffect, useState } from 'react';
-import {Link,useParams} from 'react-router-dom'
 import { Row , Col } from 'antd'
 import { ProductContext } from '../../../Context/Product'
+import { LoadingOutlined } from '@ant-design/icons'
 import './ProductStyle.css'
 import ProductItem from './ProductItem';
 
 function Product() {
     
-    const {getProduct,productState:{products}} = useContext(ProductContext)
+    const {getProduct,productState:{products,productLoading}} = useContext(ProductContext)
     useEffect(()=>getProduct(),[])
 
     return (
@@ -18,6 +18,13 @@ function Product() {
                         <ProductItem item={item}  key={item._id}/>
                     ))
                 }
+                {
+                    productLoading && 
+                    <div className="loading">
+                        <LoadingOutlined />
+                    </div>
+                }
+                
             </Row>
         </div>
     )

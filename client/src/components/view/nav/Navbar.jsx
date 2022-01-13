@@ -28,7 +28,6 @@ function Navbar() {
     //useffect
 
     useEffect(() =>{
-        console.log('useeffect get cart')
         GetCart()
     },[user])
     //handel login

@@ -10,7 +10,7 @@
 
 # production
 /build
-
+/deploy_surge.sh
 # misc
 .DS_Store
 .env.local
