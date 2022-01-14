@@ -53,11 +53,12 @@
 .stall-table-item-img {
     width: 90px;
     height: 90px;
+    margin-right: 10px;
 }
 .stall-table-item-img img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 th.stall-table-name {
     display: flex;
@@ -68,7 +69,11 @@ table.stall-list.stall-table {
     color: #333333a6;
 }
 th.stall-table-name p,th.stall-table-sku,th.stall-table-price{
-    color: #333
+    color: #333;
+}
+th.stall-table-price{
+    width: 150px;
+
 }
 th.stall-table-status.available {
     color:rgb(0 171 0)

@@ -59,8 +59,38 @@ const ProductContextProvider = ({children}) =>{
             })
         }
     }
+    const GetProductByCategory = async (id) => {
+        dispatch({
+            type: 'GET_PRODUCT_LOADING',
+            payload: {
+                productLoading:true,
+            }
+        })
+        try {
+            const res = await axios.get(`${ApiUrl}/products/category/${id}`)
+            if(res.data.success){
+                dispatch({
+                    type: 'SET_PRODUCTS',
+                    payload: {
+                        productLoading:false,
+                        products:res.data.products
+                    }
+                })
+            }
+        } catch (error) {
+            console.error(error)
+            dispatch({
+                type: 'LOAD_PRODUCTS_FAIL',
+                payload: {
+                    productLoading:false,
+                    products:[],
+                    product:null
+                }
+            })
+        }
+    }
 
-    const productContextdata = { getProduct,productState,GetOneProduct}
+    const productContextdata = { getProduct,productState,GetOneProduct,GetProductByCategory}
     return (
         <ProductContext.Provider value={productContextdata}>
             {children}

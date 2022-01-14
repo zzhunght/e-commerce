@@ -12,6 +12,11 @@ export const ProductReducer = (state, action) =>{
                 ...state,
                 ...payload
             }
+        case 'GET_PRODUCT_LOADING':
+            return {
+                ...state,
+                ...payload
+            }
         default:
 
             return state

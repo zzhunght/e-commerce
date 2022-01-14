@@ -66,7 +66,7 @@ function ProductDetails() {
                         {product?.name}
                     </div>
                     <div className="product-details-price">
-                        {sku.price || 100 } USD
+                        {sku.price || 100 }  đ
                     </div>
                     <div className="product-details-color">
                         {product?.color.map(c =>
@@ -123,7 +123,7 @@ function ProductDetails() {
                 <div className="product-details-shop">
                     <div className="product-details-shop-header">
                         <div className="shop-img">
-                            <img src="https://cdn1.vectorstock.com/i/1000x1000/65/60/business-online-shop-computer-monitor-store-icon-vector-17026560.jpg" alt="" />
+                            <img src="https://cdn1.vectorstock.com/i/1000x1000/65/60/business-online-shop-computer-monitor-store-icon-vector-17026560.jpg" alt=""/>
                         </div>
                         <div className="shop-name">{product?.user?.firstName} {product?.user?.lastName}</div>
                     </div>

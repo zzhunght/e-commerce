@@ -198,7 +198,7 @@ function EditProductPage() {
                     </div>
                     <div className="form-group select">
                         
-                        <label for="status">Tình Trạng</label>
+                        <label htmlFor="status">Tình Trạng</label>
                         <select
                          id="status" 
                          className="beautiful" 

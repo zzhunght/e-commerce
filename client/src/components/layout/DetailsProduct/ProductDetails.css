@@ -27,9 +27,17 @@
     border-left: 1px solid #d7d7d7;
     width: 400px;
 }
-.product-details-name{
+
+.product-details-name {
     font-size: 22px;
+    overflow: hidden;
+    display: -webkit-box;
+    max-height: 70px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    width: 100%;
 }
+
 .product-details-price{
     width: 100%;
     background: #eeeeee;
@@ -184,7 +192,7 @@
     overflow: hidden;
 }
 .watch-shop-details,.follow-shop {
-    width: 100px;
+    width: 130px;
     height: 32px;
     border: 1.5px solid #18a3e2;
     display: flex;

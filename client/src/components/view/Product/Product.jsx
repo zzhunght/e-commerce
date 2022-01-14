@@ -5,10 +5,13 @@ import { LoadingOutlined } from '@ant-design/icons'
 import './ProductStyle.css'
 import ProductItem from './ProductItem';
 
-function Product() {
+function Product({category}) {
     
-    const {getProduct,productState:{products,productLoading}} = useContext(ProductContext)
-    useEffect(()=>getProduct(),[])
+    const {getProduct,GetProductByCategory,productState:{products,productLoading}} = useContext(ProductContext)
+    useEffect(()=>{
+        if(category) return GetProductByCategory(category)
+        getProduct()
+    },[category])
 
     return (
         <div className="products-wrapper">

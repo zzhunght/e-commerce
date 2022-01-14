@@ -73,7 +73,29 @@ route.get('/', async (req,res)=>{
         })
     }
 })
+route.get('/category/:categoryid', async (req,res)=>{
+    const categoryid = req.params.categoryid
+    try {
+        const products = await Product.find({category:categoryid})
 
+        if(!products) return res.json({
+            success: false,
+            message:'No item Found'
+        })
+        
+        res.json({
+            success:true,
+            products
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
+    }
+})
 //get all item shop
 // public methods
 route.get('/:id/shop', async (req,res)=>{

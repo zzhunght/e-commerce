@@ -9,6 +9,7 @@ import LoginModal from '../Modal/LoginModal'
 import RegisterModal from '../Modal/RegisterModal'
 import {message ,Badge} from 'antd'
 import { CartContext } from '../../../Context/Cart'
+import { CategoryContext } from '../../../Context/Category'
 
 
 
@@ -19,7 +20,10 @@ function Navbar() {
     const {cartState:{
         carts
     },GetCart} = useContext(CartContext)
-    
+    const {CategoryState:{
+        categories,
+        categoryLoading
+    },GetCategory} = useContext(CategoryContext)
     //local state
     const [LoginModalShow,setLoginModalShow] = useState(false)
     const [RegisterModalShow,setRegisterModalShow] = useState(false)
@@ -29,6 +33,7 @@ function Navbar() {
 
     useEffect(() =>{
         GetCart()
+        GetCategory()
     },[user])
     //handel login
     const handleLoginModal = async(form)=>{
@@ -72,57 +77,69 @@ function Navbar() {
     }
     return (
         <div className="navbar-wr">
-        <div className="navbar">    
-            <Link to="/" className="logo">
-                <img src={logo} alt="" />
-            </Link>
-            <div className="search-box">
-                <input name="search" placeholder="Search" type="text" className="search-form"/>
-                <div className="search-icon">
-                    <SearchOutlined />
+            <div className="navbar">    
+                <Link to="/" className="logo">
+                    <img src={logo} alt="" />
+                </Link>
+                <div className="search-box">
+                    <input name="search" placeholder="Search" type="text" className="search-form"/>
+                    <div className="search-icon">
+                        <SearchOutlined />
+                    </div>
+                </div>
+                <div className="auth-control">
+                    {
+                        !isAuthenticated && !user &&
+                        <div className="login-register">
+                            <p className="login" onClick={()=>setLoginModalShow(true)}>Login</p>
+                            <p className="register" onClick={()=>setRegisterModalShow(true)}>register</p>
+                        </div>
+                    }
+                    {
+                        isAuthenticated && user &&
+                        <div className="user-wr">
+                            <div className="user">
+                                <div className="user-avatar">
+                                    <img src={ava} alt="" />
+                                </div>
+                                <div className="user-feature">
+                                    <ul className="user-feature-list">
+                                        <li className="user-feature-item">
+                                            <Link to="/my-stall/products">
+                                                Cửa hàng của tôi
+                                            </Link>
+                                        </li>
+                                        <li className="user-feature-item" onClick={onClickLogOut}> Đăng xuất</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="welcome">
+                                <p>Hi, {user.firstName} {user.lastName}</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div className="cart-icon-wr">
+                    <Link to="/my-cart" className="cart-icon">
+                        <Badge count={carts.length || 0}  className="badge">
+                            <ShoppingCartOutlined  className="shopping-cart-icon"/>
+                        </Badge>
+
+                    </Link>
                 </div>
             </div>
-            <div className="auth-control">
+            <div className="categories-list">
                 {
-                    !isAuthenticated && !user &&
-                    <div className="login-register">
-                        <p className="login" onClick={()=>setLoginModalShow(true)}>Login</p>
-                        <p className="register" onClick={()=>setRegisterModalShow(true)}>register</p>
-                    </div>
-                }
-                {
-                    isAuthenticated && user &&
-                    <div className="user-wr">
-                        <div className="user">
-                            <div className="user-avatar">
-                                <img src={ava} alt="" />
-                            </div>
-                            <div className="user-feature">
-                                <ul className="user-feature-list">
-                                    <li className="user-feature-item">
-                                        <Link to="/my-stall/products">
-                                            Cửa hàng của tôi
-                                        </Link>
-                                    </li>
-                                    <li className="user-feature-item" onClick={onClickLogOut}> Đăng xuất</li>
-                                </ul>
-                            </div>
+                    categories && categories.length >0 &&
+                    categories.map((item,i) => (
+                        <div className="category-item">
+                            <Link to={`/category/${item._id}/products`}>
+                                {item.label.vi}
+                            </Link>
                         </div>
-                        <div className="welcome">
-                            <p>Hi, {user.firstName} {user.lastName}</p>
-                        </div>
-                    </div>
+                    ))
                 }
             </div>
-            <div className="cart-icon-wr">
-                <Link to="/my-cart" className="cart-icon">
-                    <Badge count={carts.length || 0}  className="badge">
-                        <ShoppingCartOutlined  className="shopping-cart-icon"/>
-                    </Badge>
-
-                </Link>
-            </div>
-        </div>
         <LoginModal
          LoginModalShow={LoginModalShow} 
          handleLoginModalCancel={handleLoginModalCancel} 

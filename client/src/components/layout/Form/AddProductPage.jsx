@@ -162,7 +162,7 @@ function AddProductPage() {
                     </div>
                     
                     <div className="form-group category select">
-                        <label for="category">Danh Mục</label>
+                        <label htmlFor="category">Danh Mục</label>
                         <select id="category" className=" beautiful" onChange={e =>onCategoryChange(e)}>
                             {categoriesList.map((item,i) => (
                                 <option
