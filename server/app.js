@@ -33,4 +33,4 @@ app.use('/api/cart',CartRoute)
 app.use('/api/category',CategoryRoute)
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT, ()=> console.log(`App listening on port ${PORT}`))
+app.listen(process.env.PORT || 5000, ()=> console.log(`App listening on port ${PORT}`))
