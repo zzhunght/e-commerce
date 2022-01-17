@@ -90,7 +90,38 @@ const ProductContextProvider = ({children}) =>{
         }
     }
 
-    const productContextdata = { getProduct,productState,GetOneProduct,GetProductByCategory}
+    const GetProductBySearch = async (key) =>{
+        dispatch({
+            type: 'GET_PRODUCT_LOADING',
+            payload: {
+                productLoading:true,
+            }
+        })
+        try {
+            const res = await axios.get(`${ApiUrl}/products/search?key=${key}`)
+            if(res.data){
+                dispatch({
+                    type: 'SET_PRODUCTS',
+                    payload: {
+                        productLoading:false,
+                        products:res.data.products
+                    }
+                })
+            }
+        } catch (error) {
+            dispatch({
+                type: 'LOAD_PRODUCTS_FAIL',
+                payload: {
+                    productLoading:false,
+                    products:[],
+                    product:null
+                }
+            })
+            
+        }
+    }
+
+    const productContextdata = { getProduct,productState,GetOneProduct,GetProductByCategory,GetProductBySearch}
     return (
         <ProductContext.Provider value={productContextdata}>
             {children}

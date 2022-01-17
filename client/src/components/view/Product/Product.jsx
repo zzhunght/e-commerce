@@ -7,25 +7,24 @@ import ProductItem from './ProductItem';
 
 function Product({category}) {
     
-    const {getProduct,GetProductByCategory,productState:{products,productLoading}} = useContext(ProductContext)
-    useEffect(()=>{
-        if(category) return GetProductByCategory(category)
-        getProduct()
-    },[category])
+    const {productState:{products,productLoading}} = useContext(ProductContext)
+
 
     return (
         <div className="products-wrapper">
             <Row className="products-row" gutter={[16,16]}>
+                
                 {
-                    products?.map(item =>(
-                        <ProductItem item={item}  key={item._id}/>
-                    ))
-                }
-                {
-                    productLoading && 
-                    <div className="loading">
+                    productLoading ? 
+                    (
+                        <div className="loading">
                         <LoadingOutlined />
-                    </div>
+                        </div>
+                    ):(
+                        products?.map(item =>(
+                            <ProductItem item={item}  key={item._id}/>
+                        ))
+                    )
                 }
                 
             </Row>

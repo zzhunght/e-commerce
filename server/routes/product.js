@@ -182,6 +182,39 @@ route.get('/myproducts',verifyToken,async (req,res)=>{
     }
 })
 
+// search item
+
+route.get('/search',async (req,res)=>{
+    const key = req.query.key
+    console.log('key',key)
+    try {
+        const products = await Product.find({
+            $text:{
+                $search:key
+            }
+        }).populate('category')
+        console.log(products)
+        if(!products) return res.json({
+            success: false,
+            message:'No item Found'
+        })
+
+        res.json({
+            success:true,
+            products
+        })
+
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            message:'something went wrongs'
+        })
+    }
+    
+})
+
 
 //update item
 // pivate route

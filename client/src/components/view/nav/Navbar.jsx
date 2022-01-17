@@ -10,6 +10,7 @@ import RegisterModal from '../Modal/RegisterModal'
 import {message ,Badge} from 'antd'
 import { CartContext } from '../../../Context/Cart'
 import { CategoryContext } from '../../../Context/Category'
+import { ProductContext } from '../../../Context/Product'
 
 
 
@@ -24,10 +25,11 @@ function Navbar() {
         categories,
         categoryLoading
     },GetCategory} = useContext(CategoryContext)
+    const {GetProductBySearch} = useContext(ProductContext)
     //local state
     const [LoginModalShow,setLoginModalShow] = useState(false)
     const [RegisterModalShow,setRegisterModalShow] = useState(false)
-    
+    const [searchKey,setSearchKey] = useState('')
 
     //useffect
 
@@ -75,6 +77,10 @@ function Navbar() {
         LogOut()
         
     }
+    //
+    const onSearchInputChange = (e) =>{
+        setSearchKey(e.target.value)
+    }
     return (
         <div className="navbar-wr">
             <div className="navbar">    
@@ -82,10 +88,17 @@ function Navbar() {
                     <img src={logo} alt="" />
                 </Link>
                 <div className="search-box">
-                    <input name="search" placeholder="Search" type="text" className="search-form"/>
-                    <div className="search-icon">
+                    <input
+                     name="search" 
+                     placeholder="Search" 
+                     type="text" 
+                     className="search-form"
+                     value={searchKey}
+                     onChange={onSearchInputChange}
+                    />
+                    <Link to={`/search/${searchKey}`} className="search-icon" onClick={()=>GetProductBySearch(searchKey)}>
                         <SearchOutlined />
-                    </div>
+                    </Link>
                 </div>
                 <div className="auth-control">
                     {
@@ -132,7 +145,7 @@ function Navbar() {
                 {
                     categories && categories.length >0 &&
                     categories.map((item,i) => (
-                        <div className="category-item">
+                        <div className="category-item" key={i}>
                             <Link to={`/category/${item._id}/products`}>
                                 {item.label.vi}
                             </Link>

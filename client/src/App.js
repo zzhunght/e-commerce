@@ -17,6 +17,7 @@ import SellerContextProvider from './Context/SellerStall';
 import SellerStall from './components/layout/SellerStall/SellerStall';
 import CategoryContextProvider from './Context/Category';
 import CategoriesProduct from './components/layout/CategoriesProduct/CategoriesProduct';
+import SearchPage from './components/layout/SearchPage/SearchPage';
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
                     </Route>
                     <Route exact path="/stall/edit">
                       <EditProductPage />
+                    </Route>
+                    <Route exact path="/search/:key">
+                      <SearchPage />
                     </Route>
                     <Route exact path="/category/:id/products">
                       <CategoriesProduct />
