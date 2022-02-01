@@ -1,47 +1,58 @@
-import React from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Pagination,Navigation } from 'swiper';
+import React, { useState } from 'react'
+import {LeftOutlined, RightOutlined} from '@ant-design/icons'
+import Slider from "react-slick";
 import ssBanner from '../../../asset/ss-banner.jpg'
 import xiaomiBanner from '../../../asset/xiaomi-banner.jpg'
 import apBanner from '../../../asset/banner-ip-12.jpg'
 import ipBanner from '../../../asset/apple-watch-banner.jpg'
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './Carouselstyle.css'
-SwiperCore.use([Pagination,Navigation]);
 function Carousel() {
+    // const NextArrow = ({onClick}) => (
+    //     <div className="arrow next" onClick={onClick}>
+    //         <RightOutlined />
+    //     </div>
+    // )
+    // const PrevArrow = ({onClick}) => (
+    //     <div className="arrow prev" onClick={onClick}>
+    //         <LeftOutlined />
+    //     </div>
+    // )
+
+    const [imageIndex,setImageIndex] = useState(0)
+    const settings = {
+        // autoplay: true,
+        infinite: true,
+        speed: 1000,
+        autoplaySpeed: 5000,
+        slidesToShow: 3,
+        centerPadding:0,
+        // swipeToSlide: false,
+        // draggable: false,
+        centerMode:true,
+        arrow: false,
+        // nextArrow: <NextArrow /> ,
+        // prevArrow: <PrevArrow /> ,
+        slidesToScroll: 1,
+        beforeChange: (current,next) => setImageIndex(next)
+      };
+    let slides = [
+        ssBanner,
+        xiaomiBanner,
+        apBanner,
+        ipBanner
+    ]
+
     return (
         <div className="carousel-wr">
-            <Swiper
-             autoplay={true}
-             slidesPerView={1} 
-             spaceBetween={30} 
-             loop={true} 
-             pagination={{"clickable": true}} 
-             navigation={true} 
-             className="mySwiper my-carousel"
-            >
-                <SwiperSlide>
-                    <div className="carousel-img">
-                        <img src={ssBanner} alt="" />
+            <Slider {...settings}>
+                {slides.map((img ,i ) =>(
+                    <div className={`${ i === imageIndex ? "slide activeSlide" : "slide"}`} key={i}>
+                        <img src={img} alt="" />
                     </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="carousel-img">
-                        <img src={ipBanner} alt="" />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="carousel-img">
-                        <img src={apBanner} alt="" />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="carousel-img">
-                        <img src={xiaomiBanner} alt="" />
-                    </div>
-                </SwiperSlide>
-                
-            </Swiper>   
+                ))}
+            </Slider>
         </div>
     )
 }

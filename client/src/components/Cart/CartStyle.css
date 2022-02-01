@@ -1,10 +1,14 @@
 .carts-wr{
     width: 1200px;
     max-width: 100%;
+    min-height:50vh;
     margin: 0 auto;
     height: auto;
     padding-top: 30px;
     padding-bottom: 120px;
+    border-radius:1px solid #ccc;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom:20px;
 }
 .cart {
     background: #fff;
@@ -86,4 +90,17 @@ span.sub-total-price {
     margin-left: 6px;
     font-weight: 600;
     color: #000;
+}
+.cart-item-not-authorization{
+    height:300px;
+    padding: 20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.cart-item-not-authorization p{
+    font-size: 20px;
+    font-weight:500;
 }

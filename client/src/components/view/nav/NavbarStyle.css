@@ -50,13 +50,13 @@
 }
 .login-register .login{
     font-size: 17px;
-    color: #fff;
+    color: #000;
     margin-right: 10px;
     cursor: pointer;
 }
 .login-register .register{
     font-size: 17px;
-    color: #fff;
+    color: #000;
     margin-right: 10px;
     cursor: pointer;
 }
@@ -124,7 +124,7 @@
     display: flex;
     align-items: center;
     margin-left: 6px;
-    color: #fff;
+    color: #000;
     font-size: 16px;
     font-weight: 500;
 }
@@ -139,13 +139,13 @@
     width: 40px;
     font-size: 27px;
     text-align: center;
-    color: #fff;
+    color: #000;
     cursor: pointer;
 }
 span.anticon.anticon-shopping-cart.shopping-cart-icon {
     width: 40px;
     font-size: 28px;
-    color: #fff;
+    color: #000;
 }
 .categories-list {
     width: 1200px;
@@ -155,10 +155,13 @@ span.anticon.anticon-shopping-cart.shopping-cart-icon {
     margin-bottom: 20px;
 }
 .category-item  a{
-    color: #fff;
+    color: #000;
 }
 .category-item {
     padding-right: 33px;
     font-size: 15px;
     font-weight: 500;
+}
+.search-box.mobile{
+    display:none;
 }

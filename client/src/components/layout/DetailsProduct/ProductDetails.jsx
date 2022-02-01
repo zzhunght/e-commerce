@@ -23,7 +23,6 @@ function ProductDetails() {
     const id = param.id
 
     const onColorChange = (color) => {
-        console.log('color',color)
         setColor(color)
     }
 
@@ -58,6 +57,9 @@ function ProductDetails() {
     return (
         <div className="product-details-wr">
             <div className="product-details">
+                <div className="mobile-product-details-name">
+                        {product?.name}
+                    </div>
                 <div className="product-details-img">
                     <img src={product?.imageUrl} alt="" />
                 </div>
@@ -69,6 +71,7 @@ function ProductDetails() {
                         {sku.price || 100 }  đ
                     </div>
                     <div className="product-details-color">
+                        <p className="producttitle">Màu Sắc :</p>
                         {product?.color.map(c =>
                             (
                                 <div
@@ -82,6 +85,8 @@ function ProductDetails() {
                         )}
                     </div>
                     <div className="product-details-size">
+                        <p className="producttitle">Size :</p>
+
                         {product?.skus.map((s,i) =>(
                             <div
                              className={`size ${s.size === sku.size ? 'size-active': ''}`}
@@ -121,6 +126,7 @@ function ProductDetails() {
                     </div>
                 </div>
                 <div className="product-details-shop">
+                    
                     <div className="product-details-shop-header">
                         <div className="shop-img">
                             <img src="https://cdn1.vectorstock.com/i/1000x1000/65/60/business-online-shop-computer-monitor-store-icon-vector-17026560.jpg" alt=""/>

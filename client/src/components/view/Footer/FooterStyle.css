@@ -1,0 +1,90 @@
+.footer-wr {
+    height: 200px;
+    background: #000;
+    margin-top: 200px;
+    max-width:100%;
+    position: relative;
+    bottom: 0;
+}
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    top: -100px;
+    left: 0;
+    background:  url(../../../asset/wave.png);
+    background-size:1000px 100px;
+}
+.wave#wave1{
+    z-index: 1000;
+    opacity: 1;
+    bottom: 0;
+    animation: Wave 4s  linear infinite;
+}
+.wave#wave2{
+    z-index: 999;
+    opacity: 0.5;
+    bottom: 10px;
+    animation: Wave2 4s  linear infinite;
+}
+.wave#wave3{
+    z-index: 1000;
+    opacity: 0.2;
+    bottom: 15px;
+    animation: Wave 3s  linear infinite;
+}
+.wave#wave4{
+    z-index: 999;
+    opacity: 0.7;
+    bottom: 20px;
+    animation: Wave2 3s  linear infinite;
+}
+
+
+@keyframes Wave {
+    0%{
+        background-position-x:1000px;
+    }
+    100%{
+        background-position-x:0px;
+    }
+}
+@keyframes Wave2 {
+    0%{
+        background-position-x:0px;
+    }
+    100%{
+        background-position-x:1000px;
+    }
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.social-media-icon {
+    margin-top: 40px;
+}
+.social-media-icon a{
+    font-size: 40px;
+    margin-right: 20px;
+    color: #fff;
+    transition: all 0.3s linear;
+    position: relative;
+    transform:translate(0);
+    display:inline-block;
+}
+.social-media-icon a:hover{
+    transform:translateY(-12px)
+}
+.power-by{
+    color:#fff;
+    font-size: 20px;
+    margin-top: 15px;
+}
+.power-by span {
+    border-bottom: 1px solid #fff;
+    
+}

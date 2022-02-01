@@ -1,18 +1,71 @@
 .carousel-wr{
+    
     width: 1200px;
     margin: 0 auto;
+    /* border: 1px solid #ccc; */
+    border-radius: 6px;
+    /* overflow: hidden; */
+    height:400px;
+    margin-bottom: 20px;
+    max-width:100%;
 
+}
+.slick-slider {
+    
+    /* background: #d0d0d0; */
 }
 .my-carousel{
     height:100%
 }
-.swiper-wrapper{
+.slide img{
+    /* width: 50rem; */
     width: 100%;
-    height: 580px;
+    height: 100%;
+    object-fit:fill;
+    margin:0 auto;
+    z-index: 1;
+    border-radius:10px;
+    
 }
-.carousel-img{
-    width: 100%;
+.slide {
+    margin-top: 40px;
+    transition: all 0.3s;
+    transform: scale(0.8) translateY(-9%);
+    opacity: 1;
+    position: relative;
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 10px;
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
 }
-.carousel-img img{
-    width: 100%;
+.activeSlide {
+    margin-top: 10px;
+    transform: scaleX(1.5) scaleY(1);
+    opacity: 1;
+    /* left: -50%; */
+    z-index: 2;
+    width: auto !important;
+    border-radius: 10px;
+    /* height: 360px; */
+    overflow: hidden;
+}
+.arrow{
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.arrow.next{
+    right:-7%;
+    font-size: 43px;
+    
+}
+.arrow.prev{
+    left: -7%;
+    font-size: 43px;
+    z-index: 1000;
 }

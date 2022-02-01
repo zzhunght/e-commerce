@@ -77,6 +77,9 @@ Content-Type: application/json
 DELETE  http://localhost:5001/api/products/61c3d9d5be83e6caeb84d1b7
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo
 
+##########333
+GET http://localhost:5000/api/products/category/61df8b5e149c9bbc47f8e7b3
+
 
 
 

@@ -18,6 +18,7 @@ import SellerStall from './components/layout/SellerStall/SellerStall';
 import CategoryContextProvider from './Context/Category';
 import CategoriesProduct from './components/layout/CategoriesProduct/CategoriesProduct';
 import SearchPage from './components/layout/SearchPage/SearchPage';
+import Footer from './components/view/Footer/Footer';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
                       <ProductDetails />
                     </Route>
                   </Switch>
+                  <Footer />
                 </Router>
               </CategoryContextProvider>
             </SellerContextProvider>

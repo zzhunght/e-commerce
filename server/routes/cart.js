@@ -18,13 +18,7 @@ route.get('/',verifyToken,async (req,res)=>{
               }
             )
         }
-        await Cart.aggregate([
-            {$unwind:"$products"},
-            {$group:{
-                _id:'$_id',
-                total:{$sum:"$products.skus.price"}
-            }}
-        ])
+        
         const cart = await Cart.findOne({user:userId}).populate({
             path:'products',
             populate:{
@@ -98,8 +92,6 @@ route.patch('/update/:id',verifyToken, async (req,res) =>{
     const id = req.params.id
 
     try {
-        const item = req.body
-        console.log(item)
         const user = await User.findOne({user:userId})
         if(!user) {
             return res.status(400).json(
@@ -117,10 +109,8 @@ route.patch('/update/:id',verifyToken, async (req,res) =>{
             },
             {
                 $set: {
-                    "products.$.skus":req.body.skus,
                     "products.$.quantity":req.body.quantity,
-                    "products.$.productId":req.body.productId,
-                    "products.$.color":req.body.color
+               
                 }
             },
             {

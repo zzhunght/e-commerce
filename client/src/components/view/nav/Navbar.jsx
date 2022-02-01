@@ -104,8 +104,8 @@ function Navbar() {
                     {
                         !isAuthenticated && !user &&
                         <div className="login-register">
-                            <p className="login" onClick={()=>setLoginModalShow(true)}>Login</p>
-                            <p className="register" onClick={()=>setRegisterModalShow(true)}>register</p>
+                            <p className="login" onClick={()=>setLoginModalShow(true)}>Đăng Nhập</p>
+                            <p className="register" onClick={()=>setRegisterModalShow(true)}>Đăng Ký</p>
                         </div>
                     }
                     {
@@ -121,6 +121,9 @@ function Navbar() {
                                             <Link to="/my-stall/products">
                                                 Cửa hàng của tôi
                                             </Link>
+                                        </li>
+                                        <li className="user-feature-item">
+                                            Cài Đặt 
                                         </li>
                                         <li className="user-feature-item" onClick={onClickLogOut}> Đăng xuất</li>
                                     </ul>
@@ -141,6 +144,19 @@ function Navbar() {
                     </Link>
                 </div>
             </div>
+            <div className="search-box mobile">
+                    <input
+                     name="search" 
+                     placeholder="Search" 
+                     type="text" 
+                     className="search-form"
+                     value={searchKey}
+                     onChange={onSearchInputChange}
+                    />
+                    <Link to={`/search/${searchKey}`} className="search-icon" onClick={()=>GetProductBySearch(searchKey)}>
+                        <SearchOutlined />
+                    </Link>
+                </div>
             <div className="categories-list">
                 {
                     categories && categories.length >0 &&

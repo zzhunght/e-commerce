@@ -38,7 +38,7 @@ function SellerStall() {
                                             <StarOutlined className="star" /> 0/5
                                         </div>
                                         <div className="sl-follower">
-                                            <UsergroupAddOutlined className="user-follower" /> Người theo dõi: 0
+                                            <UsergroupAddOutlined className="user-follower" /> <span className="sl-follower-text">Người theo dõi:</span> 0
                                         </div>
                                     </div>
                                 </div>
