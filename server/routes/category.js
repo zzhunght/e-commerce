@@ -7,6 +7,16 @@ const Category = require('../models/category')
 route.post('/', async (req,res)=>{
 
     const form = req.body
+
+    //form 
+    // {
+    //     name:'name',
+    //     label:{
+    //         en:'name',
+    //         vi:'name'
+    //     }
+    // }
+    
     try {
         const category = new Category(form)
         await category.save()

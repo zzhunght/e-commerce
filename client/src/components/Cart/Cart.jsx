@@ -4,7 +4,7 @@ import {AuthContext} from '../../Context/Auth'
 import './CartStyle.css'
 function Cart() {
 
-    const {cartState:{carts,total},GetCart,DeleteItem} = useContext(CartContext)
+    const {cartState:{carts,total},GetCart,DeleteItem,UpdateQuantity} = useContext(CartContext)
     const {authState:{isAuthenticated}} = useContext(AuthContext)
 
     useEffect(() => GetCart(),[])
@@ -43,7 +43,22 @@ function Cart() {
                                         <strong style={{color: '#0abb0a'}}>Color :</strong> {cart?.color}
                                     </div>
                                     <div className="cart-item-quantity">
-                                        <strong>Qty:</strong> {cart?.quantity}
+                                        <strong>Qty:</strong>
+                                        <button
+                                         className="btn-descrease" 
+                                         disabled={cart?.quantity === 1}
+                                         onClick={()=>UpdateQuantity(cart._id,cart?.quantity-1)}
+                                        >
+                                            -
+                                        </button>
+                                        {cart?.quantity}
+                                        <button
+                                         className="btn-increase"
+                                         onClick={()=>UpdateQuantity(cart._id,cart?.quantity+1)}
+
+                                        >
+                                            +
+                                        </button>
                                     </div>
                                     <div className="cart-item-delete" onClick={()=>DeleteItem(cart?._id)}>
                                         Delete

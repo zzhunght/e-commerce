@@ -22,7 +22,7 @@ function Carousel() {
 
     const [imageIndex,setImageIndex] = useState(0)
     const settings = {
-        // autoplay: true,
+        autoplay: true,
         infinite: true,
         speed: 1000,
         autoplaySpeed: 5000,

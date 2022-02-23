@@ -73,6 +73,8 @@ route.get('/', async (req,res)=>{
         })
     }
 })
+
+//get item by category
 route.get('/category/:categoryid', async (req,res)=>{
     const categoryid = req.params.categoryid
     try {

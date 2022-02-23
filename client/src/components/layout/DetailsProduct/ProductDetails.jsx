@@ -1,15 +1,23 @@
 import React , {useContext , useState, useEffect } from 'react'
 import { ProductContext } from '../../../Context/Product'
-import { FileProtectOutlined, LikeOutlined, RollbackOutlined, ShopOutlined} from '@ant-design/icons'
+import { FileProtectOutlined, LikeOutlined, RollbackOutlined, ShopOutlined ,SendOutlined} from '@ant-design/icons'
+import { Rate } from 'antd'
 import { CartContext } from '../../../Context/Cart'
 import { Link, useParams } from 'react-router-dom'
 import './ProductDetails.css'
+import { CommentContext } from '../../../Context/Comment'
+import { AuthContext } from '../../../Context/Auth'
 function ProductDetails() {
+    ////###########
+    const param = useParams()
+    const id = param.id
+
 
     //global state
     const { GetOneProduct, productState:{product}} = useContext(ProductContext)
     const { AddtoCart ,GetCart } = useContext(CartContext)
-
+    const {authState:{user}} = useContext(AuthContext)
+    const {GetComment,commentState:{comments},PostComment} = useContext(CommentContext)
     //local state
     const [sku,setSku] = useState({
         price:0,
@@ -17,10 +25,9 @@ function ProductDetails() {
     })
     const [color,setColor] = useState('')
     const [quantity,setQuantity] = useState(1)
-
-    ////###########
-    const param = useParams()
-    const id = param.id
+    const [comment,setComment] = useState('')
+    const [ratingValue,setRatingValue] = useState(2.5)
+    
 
     const onColorChange = (color) => {
         setColor(color)
@@ -28,6 +35,11 @@ function ProductDetails() {
 
     const onSizeChange = (sku) => {
         setSku(sku)
+    }
+
+    const onRatingChange = (rating) => {
+        setRatingValue(rating)
+        console.log(rating)
     }
     const onAddClick = async () => {
         const form = {
@@ -44,9 +56,35 @@ function ProductDetails() {
             await GetCart()
         }
     }
+
+    const onCommentChange = (e) => {
+        setComment(e.target.value)
+    }
+
+    const handelSendCmt = async() => {
+        const form = {
+            comment:comment,
+            user:user._id,
+            productId:id,
+            rating:ratingValue
+        }
+        const res = await PostComment(id,form)
+        if(res.success) {
+            await GetComment(id)
+            setComment('')
+        }
+    }
+    //get product
     useEffect(() =>{
         GetOneProduct(id) 
     },[id])
+
+    //get product comment
+    useEffect(() =>{
+        GetComment(id) 
+    },[id])
+
+    //set sku
     useEffect(() =>{
         if(product){
             setSku(product.skus[0])
@@ -194,7 +232,72 @@ function ProductDetails() {
                     </div>
                 </div>
             </div>
+
+            <div className="cmt-wr">
+                <h2 className="cmt-header">
+                    Bình luận về sản phẩm
+                </h2>
+                <div className="list-cmt">
+                    {comments?.map(comment =>(
+                        <div className="cmt-item">
+                        <div className="customer-avatar">
+                            <img src={comment.user.avatar || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKbihJUYGVfMawl2VX4x8pX9BaPodV_RAThV--JiHl5AsQybzScy6G0xeoaCfgcw-h_XQ&usqp=CAU'} alt="" />
+                        </div>
+                        <div className="customer-cmt-des">
+                            <div className="customer-name">
+                                {comment.user.firstName} {comment.user.lastName}
+                            </div>
+                            <div className="customer-rating">
+                                <Rate
+                                 allowHalf
+                                 value={comment.rating}
+                                 disabled
+                                 className="customer-rating-star"
+                                />
+                            </div>
+                            <div className="customer-review">
+                                {comment.comment}
+                            </div>
+                        </div>
+                        </div>
+                    ))}
+                </div>
+                {comments.length === 0 && 
+                    <div className="cmt-empty">
+                        <div className="cmt-empty-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3159/3159020.png" alt="" />
+                        </div>
+                        <h2 className="no-cmt-title">Sản Phẩm này chưa có bình luận</h2>
+                    </div>
+                }
+                <div className="rating-box">
+                    <Rate
+                     allowHalf
+                     defaultValue={2.5}
+                     className="rating-choice"
+                     onChange={onRatingChange}
+                     />
+                </div>
+                <div className="cmt-box">
+                    
+                    <input
+                     type="text-area" 
+                     className="cmt-box-area" 
+                     value={comment}
+                     onChange={(e)=>onCommentChange(e)}
+                    />
+
+                    <button className='btn cmt-btn' >
+                        <SendOutlined
+                         className={`cmt-send-icon ${comment.length === 0 ?'disabled':''}`} 
+                         onClick={handelSendCmt}
+                        />
+                    </button>
+                </div>
+            </div>
         </div>
+
+        
     )
 }
 

@@ -272,3 +272,97 @@ span.benefit-item-value-title {
     font-weight: 500;
     color: #000;
 }
+
+
+
+.cmt-wr{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 25px;
+    border:1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.cmt-box{
+    display:flex;
+    border:1px solid #97baee;
+    border-radius: 12px;
+    padding: 5px 10px;
+    justify-content: center;
+}
+.cmt-box-area {
+    /* width: 250px; */
+    flex: 1;
+    height: 30px;  
+    outline: none; 
+    border: none;
+}
+.cmt-btn{
+    cursor: pointer;
+    height: 30px;
+    border: none;
+    background: none;
+
+}
+.cmt-send-icon {
+    font-size: 24px;
+    color: #2a67dc;
+}
+.cmt-send-icon.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+.rating-box {
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+.ant-rate-star:not(:last-child) {
+    margin-right: 3px;
+}
+
+.customer-rating .ant-rate-star-first .anticon, .customer-rating .ant-rate-star-second .anticon {
+    vertical-align: middle;
+    font-size: 11px;
+}
+.list-cmt{
+}
+.cmt-item {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.customer-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.customer-avatar img {
+    width: 100%;
+}
+.customer-cmt-des{
+    margin-left:10px
+}
+.customer-name {
+    font-size:14px;
+    font-weight:500;
+}
+.cmt-empty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cmt-empty-icon{
+    width:100px;
+}
+.cmt-empty-icon img{
+    width: 100%;
+}
+.no-cmt-title{
+    
+    color: #ccc;
+    font-size: 16px;
+    font-weight: 400;
+}

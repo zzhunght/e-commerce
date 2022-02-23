@@ -58,7 +58,7 @@ GET  http://localhost:5001/api/products
 GET  http://localhost:5001/api/products/61d6af0ea3db852249c430df/p
 
 ######
-GET http://localhost:5001/api/products/myproducts
+GET http://localhost:5000/api/products/myproducts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWJmZjAzNzVkY2MxOTZjMGNlNzRlMTMiLCJpYXQiOjE2NDAyMjU5ODR9.J2HjS886h-A1E6D6iTBZ8FUFCwETPuN61AQkqe120oo 
 
 ##########
@@ -108,20 +108,21 @@ Content-Type: application/json
 
 ##################
 // sủa 1 item trong cart
-PATCH   http://localhost:5001/api/cart/update/61c9272e04ea0b12a0de44a5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1MjY4NjRjYTljMzJkNmUzOGVlMmQiLCJpYXQiOjE2NDAzMTI5MjB9.fJ91qN4NS-GaPL7TQBOIqQazPxOzdNgLCmA6lYa4LDI
+PATCH   http://localhost:5000/api/cart/update/61ee110320c0088801620f96
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWRmOGJjZDE0OWM5YmJjNDdmOGU3YmUiLCJpYXQiOjE2NDI5OTE2NTV9.dxG6twJg09HJBptA7f9FrItHf20NwvGbRsDI3jR11X8
 Content-Type: application/json
 
 {
-    "skus":{
-        "size":"32GB",
-        "price":"1399"
-    },
-    "productId":"61c3d9d6be83e6caeb84d1bb",
-    "quantity":2
+    
+    "quantity":8
 
 }
 #########
+PUT   http://localhost:5000/api/cart/update/61ee110320c0088801620f96
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWRmOGJjZDE0OWM5YmJjNDdmOGU3YmUiLCJpYXQiOjE2NDI5OTE2NTV9.dxG6twJg09HJBptA7f9FrItHf20NwvGbRsDI3jR11X8
+Content-Type: application/json
+
+###################
 
 
 // xoá item trong cart
@@ -151,3 +152,17 @@ Content-Type: application/json
 
 #################33
 GET http://localhost:5001/api/category
+
+
+###############33
+
+POST http://localhost:5000/api/comment/61e12307ca071b68ee44541f
+Content-Type: application/json
+
+{
+    "user":"61df8bcd149c9bbc47f8e7be",
+    "rating":5,
+    "comment":"sản phẩm tuyệt vời"
+}
+####################33
+GET http://localhost:5000/api/comment/61e12307ca071b68ee44541f

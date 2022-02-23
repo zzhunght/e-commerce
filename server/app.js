@@ -9,6 +9,7 @@ const UserRoute = require('./routes/user')
 const ProductRoute = require('./routes/product')
 const CartRoute = require('./routes/cart')
 const CategoryRoute = require('./routes/category')
+const CommentRoute = require('./routes/comment')
 
 
 //
@@ -31,6 +32,7 @@ app.use('/api/auth',UserRoute)
 app.use('/api/products',ProductRoute)
 app.use('/api/cart',CartRoute)
 app.use('/api/category',CategoryRoute)
+app.use('/api/comment',CommentRoute)
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, ()=> console.log(`App listening on port ${PORT}`))

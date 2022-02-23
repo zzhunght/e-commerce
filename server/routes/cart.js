@@ -110,7 +110,6 @@ route.patch('/update/:id',verifyToken, async (req,res) =>{
             {
                 $set: {
                     "products.$.quantity":req.body.quantity,
-               
                 }
             },
             {

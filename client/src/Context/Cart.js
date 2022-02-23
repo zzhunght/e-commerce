@@ -1,7 +1,7 @@
 import { createContext , useReducer} from 'react'
 import {ApiUrl,TOKEN} from './constant'
 import axios from 'axios'
-import { CartReducer } from '../Reducer/CardReducer'
+import { CartReducer } from '../Reducer/CartReducer'
 import setAuthToken from '../untils/setAuthToken'
 
 
@@ -61,6 +61,30 @@ const CartContextProvider = ({children}) =>{
         }
 
     }
+    const UpdateQuantity = async (id,quantity) => {
+        console.log(id,quantity)
+        try {
+            const res = await axios.patch(`${ApiUrl}/cart/update/${id}`,{
+                quantity:quantity
+            });
+            if(res.data.success){
+                dispatch({
+                    type:'UPDATE_QUANTITY',
+                    payload:{
+                        id,
+                        quantity
+                    }
+                })
+                GetCart()
+            }
+        } catch (error) {
+            if(error.response.data) return error.response.data
+            return {
+                success:false,
+                message:'add to card fail'
+            }
+        }
+    }
     const DeleteItem = async (id) => {
         console.log(id)
         try {
@@ -81,7 +105,7 @@ const CartContextProvider = ({children}) =>{
         }
     }
 
-    const CartContextdata = {GetCart,cartState,AddtoCart,DeleteItem}
+    const CartContextdata = {GetCart,cartState,AddtoCart,DeleteItem,UpdateQuantity}
     return(
         <CartContext.Provider value={CartContextdata}>
             {children}
