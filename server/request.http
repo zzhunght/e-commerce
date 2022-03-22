@@ -132,26 +132,27 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1M
 
 ##############
 // get cart
-GET http://localhost:5001/api/cart/
+GET http://localhost:5000/api/cart/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWM1MjY4NjRjYTljMzJkNmUzOGVlMmQiLCJpYXQiOjE2NDAzMTI5MjB9.fJ91qN4NS-GaPL7TQBOIqQazPxOzdNgLCmA6lYa4LDI
 
 
 
 ###################
-POST http://localhost:5001/api/category
+POST http://localhost:5000/api/category
 Content-Type: application/json
 
 {
-    "name":"bonsai",
+    "name":"Footwear",
     "label":{
-        "en":"Bon Sai",
-        "vi":"Cây Cảnh"
-    }
+        "en":"Footwear",
+        "vi":"Giày Dép"
+    },
+    "imageUrl":"http://bizweb.dktcdn.net/thumb/grande/100/347/923/products/121178-4.jpg?v=1586591845903"
 }
 
 
 #################33
-GET http://localhost:5001/api/category
+GET http://localhost:5000/api/category
 
 
 ###############33

@@ -55,7 +55,7 @@ p.producttitle {
 
 .product-details-price{
     width: 100%;
-    background: #eeeeee;
+    background: #eeeeee69;
     height: 50px;
     display: flex;
     align-items: center;
@@ -79,7 +79,9 @@ p.producttitle {
     cursor: pointer;
 }
 .color-item.color-active {
-    border: 1px solid red
+    border-radius: 5px;
+    border: 1px solid red;
+    background: #ffe3e3;
 }
 .product-details-size{
     margin-top: 15px;
@@ -95,7 +97,9 @@ p.producttitle {
     cursor: pointer;
 }
 .size.size-active {
-    border: 1px solid red
+    border-radius: 5px;
+    border: 1px solid red;
+    background: #ffe3e3;
 }
 .quantity-add-to-card{
     margin-top: 20px;

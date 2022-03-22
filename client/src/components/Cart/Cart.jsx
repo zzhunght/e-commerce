@@ -1,12 +1,31 @@
 import React, { useState , useContext, useEffect }from 'react'
+import {Modal} from 'antd'
 import {CartContext} from '../../Context/Cart'
 import {AuthContext} from '../../Context/Auth'
 import './CartStyle.css'
 function Cart() {
-
+    //Global State
     const {cartState:{carts,total},GetCart,DeleteItem,UpdateQuantity} = useContext(CartContext)
     const {authState:{isAuthenticated}} = useContext(AuthContext)
 
+    // Local State
+    const [showModal,setShowModal] = useState(false)
+    const [itemId,setItemId] = useState()
+    // function
+    const handelPreDelete = (id)=>{
+        setShowModal(true)
+        setItemId(id)
+    }
+
+    const handelModalOk = () =>{
+        DeleteItem(itemId)
+        setShowModal(false)
+
+    }
+    const handelModalCancel = () =>{
+        setShowModal(false)
+    }
+    //useEffect
     useEffect(() => GetCart(),[])
     return (
         <div className="carts-wr">
@@ -14,7 +33,7 @@ function Cart() {
                isAuthenticated ? (
                 <div className="cart">
                     <div className="cart-title">
-                        <p>Shopping Cart</p>
+                        <p>Giỏ Hàng</p>
                     </div>
                     <div className="carts-list">
                         {carts?.map((cart, i) =>(
@@ -60,9 +79,9 @@ function Cart() {
                                             +
                                         </button>
                                     </div>
-                                    <div className="cart-item-delete" onClick={()=>DeleteItem(cart?._id)}>
-                                        Delete
-                                    </div>
+                                    <button className="cart-item-delete" onClick={()=>handelPreDelete(cart?._id)}>
+                                        Xoá
+                                    </button>
                                 </div>
                                 <div className="cart-item-price">
                                     ${cart?.skus.price}
@@ -85,6 +104,19 @@ function Cart() {
                    </div>
                )
            }
+           <Modal
+             className="modal-delete"
+             onOk={handelModalOk}
+             onCancel={handelModalCancel}
+             visible={showModal}
+             okText="Xoá"
+             cancelText="Huỷ"
+             okType="danger"
+            >
+                <div className="modal-delete-item">
+                    <p>Bạn có muốn xoá sản phẩm khỏi giỏ hàng !</p>
+                </div>
+           </Modal>
         </div>
     )
 }

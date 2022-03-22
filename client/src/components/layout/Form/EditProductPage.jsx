@@ -148,6 +148,7 @@ function EditProductPage() {
                     <div className="form-group">
                         <label htmlFor="name">Tên Sản Phẩm </label>
                         <input
+                         required={true}
                          type="text" 
                          name="name" 
                          id="name"
@@ -158,6 +159,7 @@ function EditProductPage() {
                     <div className="form-group">
                         <label htmlFor="brand">Thương Hiệu</label>
                         <input
+                         required={true}
                          type="text" 
                          name="brand" 
                          id="brand"
@@ -189,6 +191,7 @@ function EditProductPage() {
                     <div className="form-group">
                         <label htmlFor="imageUrl">ImageUrl</label>
                         <input
+                         required={true}
                          type="text" 
                          name="imageUrl" 
                          id="imageUrl"
@@ -213,7 +216,8 @@ function EditProductPage() {
                     </div>
                     <div className="form-group textarea">
                         <label htmlFor="description">Mô tả</label>
-                        <textarea
+                        <textarea 
+                         required={true}
                          name="description" 
                          id="description"
                          value={formvalue.description} 
@@ -291,7 +295,7 @@ function EditProductPage() {
                         </button>
                     </div>
                     
-                    <button className="submit" type="submit" className="btn btn-submit">
+                    <button className="submit btn btn-submit" type="submit" >
                         Cập Nhật
                     </button>
 

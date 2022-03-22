@@ -14,7 +14,8 @@ route.post('/', async (req,res)=>{
     //     label:{
     //         en:'name',
     //         vi:'name'
-    //     }
+    //     },
+    //     imageUrl:'https:....'
     // }
     
     try {

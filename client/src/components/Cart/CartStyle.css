@@ -61,26 +61,21 @@
 }
 .cart-item-delete {
     position: relative;
-    color: red;
+    color: #fff;
     cursor: pointer;
     margin-top: 15px;
     font-size: 13px;
     font-weight: 500;
-    width: 43px;
+    border: none;
+    padding: 4px 20px;
+    background: #fc3737;
+    border-radius: 4px;
 }
-.cart-item-delete::after{
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 100%;
-    left: 0;
-    bottom: 2px;
-    background: red;
-    display: none;
+.cart-item-delete:hover {
+    background: #fc3737c5;
+
 }
-.cart-item-delete:hover:after{
-    display: block;
-}
+
 .sub-total {
     display: flex;
     justify-content: end;

@@ -143,6 +143,7 @@ function AddProductPage() {
                     <div className="form-group">
                         <label htmlFor="name">Tên Sản Phẩm </label>
                         <input
+                         required={true}
                          type="text" 
                          name="name" 
                          id="name"
@@ -153,6 +154,7 @@ function AddProductPage() {
                     <div className="form-group">
                         <label htmlFor="brand">Thương Hiệu</label>
                         <input
+                         required={true}
                          type="text" 
                          name="brand" 
                          id="brand"
@@ -179,6 +181,7 @@ function AddProductPage() {
                     <div className="form-group">
                         <label htmlFor="imageUrl">ImageUrl</label>
                         <input
+                         required={true}
                          type="text" 
                          name="imageUrl" 
                          id="imageUrl"

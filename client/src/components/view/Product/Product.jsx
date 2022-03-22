@@ -5,7 +5,7 @@ import { LoadingOutlined } from '@ant-design/icons'
 import './ProductStyle.css'
 import ProductItem from './ProductItem';
 
-function Product({category}) {
+function Product() {
     
     const {productState:{products,productLoading}} = useContext(ProductContext)
 
@@ -18,12 +18,24 @@ function Product({category}) {
                     productLoading ? 
                     (
                         <div className="loading">
-                        <LoadingOutlined />
+                            <LoadingOutlined style={{fontSize:'35px',color:'#000'}}/>
+                            <h2>Loading...</h2>
                         </div>
                     ):(
-                        products?.map(item =>(
-                            <ProductItem item={item}  key={item._id}/>
-                        ))
+                        products.length > 0 ? (
+                            products?.map(item =>(
+                                <ProductItem item={item}  key={item._id}/>
+                            ))
+                        ) : (
+                            <div className="no-products-to-show">
+                                <div className="no-products-to-show-img">
+                                    <img src="https://dbeautyloungeindia.com/wp-content/uploads/2021/05/nproduct.png" alt="" />
+                                </div>
+                                <p className="no-products-to-show-title">
+                                    Tìm kiếm của bạn không phù hợp với bất kì sản phẩm nào. Vui lòng thử lại!
+                                </p>
+                            </div>
+                        )
                     )
                 }
                 

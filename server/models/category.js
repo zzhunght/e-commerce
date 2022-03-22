@@ -15,6 +15,9 @@ const categorySchema = new Schema({
             type:String,
             require:true
         }
+    },
+    imageUrl:{
+        type:String,
     }
    
 })
